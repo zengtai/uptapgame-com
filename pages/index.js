@@ -1,8 +1,9 @@
 import Head from "next/head";
+import Layout from "../components/Layout";
 
 export default function Home() {
   return (
-    <div className={`container`}>
+    <Layout>
       <Head>
         <title>UpTapGame | Free Online Games to Play</title>
         <meta
@@ -15,6 +16,6 @@ export default function Home() {
       <main className={`main`}></main>
 
       <footer className={`footer`}></footer>
-    </div>
+    </Layout>
   );
 }

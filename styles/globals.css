@@ -2,4 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Layout */
+.wrapper {
+  @apply flex flex-col min-h-screen;
+}
+
 /* Navbar */
+.home-button {
+  @apply absolute left-0 -top-9 text-slate-700;
+}
+.menu-button {
+  @apply absolute right-0 -top-9 text-slate-700;
+}
+.menu-panel {
+  @apply mt-12 p-3 bg-slate-800 text-slate-400 rounded-2xl shadow-lg;
+}
+.menu-list {
+  @apply grid grid-cols-3 gap-2;
+}
+.menu-item {
+  @apply border-2 border-slate-600 p-2 rounded-xl bg-slate-700 text-center;
+}
+/* Footer */
+.site-footer {
+  @apply bg-slate-600 text-slate-400 text-center;
+}
+.footer-nav {
+  @apply bg-slate-700 text-slate-400 p-3;
+}
+.footer-nav ul {
+  @apply flex space-x-4 justify-center text-sm;
+}
+.footer-logo {
+  @apply h-10 mt-7 mx-auto;
+}
+.site-footer p {
+  @apply pb-8 text-xs;
+}
