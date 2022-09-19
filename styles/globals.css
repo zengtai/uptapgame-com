@@ -26,7 +26,7 @@ body {
   @apply grid grid-cols-3 gap-2 xl:flex;
 }
 .menu-item {
-  @apply border-2 border-slate-600 py-1.5 px-2 rounded-xl bg-slate-700 text-center;
+  @apply border-2 border-slate-600 xl:border-transparent xl:bg-transparent py-1.5 px-2 rounded-xl bg-slate-700 xl:hover:bg-slate-700 xl:transform xl:duration-500 xl:ease-in-out text-center;
 }
 /* Footer */
 .site-footer {
