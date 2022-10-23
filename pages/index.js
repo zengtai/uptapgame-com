@@ -1,12 +1,19 @@
+import Image from "next/future/image";
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/Layout";
 
-export default function Home() {
+import Link from "next/link";
+
+import { SITE_META } from "../lib/constants";
+import data from "../data/games";
+
+export default function Home({ games }) {
+  // console.log(`games: `, games);
+  // console.log(`categories: `, categories);
   return (
     <Layout>
       <Head>
-        <title>UpTapGame | Free Online Games to Play</title>
+        <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
         <meta
           name="description"
           content="Play the newest online casual games for free!"
@@ -14,21 +21,52 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`container`}>
-        <div className={`section-head mx-8 my-4 text-slate-700`}>
-          <div className="flex space-x-2 items-center">
-            <h2 className={`text-lg font-bold`}>Adventure Games</h2>
-            <span className="bg-slate-200 px-2 rounded-md">45</span>
-          </div>
-        </div>
-        <div className={`section-body`}>
-          <ul>
-            <li>
-              <Image src="" alt="" width={100} height={100} />
-            </li>
-          </ul>
-        </div>
+      <div className={`home`}>
+        {games.map((i, index) => (
+          <section key={i.category.slug}>
+            <div className={`section-head`}>
+              <h2 className={`h2`}>{i.category.name + ` Games`}</h2>
+              <span className="total">{i.total}</span>
+            </div>
+            <ul className={`section-body`}>
+              {i.data.map((i) => (
+                <li className="list-item" key={i.slug}>
+                  <Link href={`/game/` + i.slug}>
+                    <a>
+                      <Image
+                        className="image"
+                        src={i.thumbnailUrl}
+                        alt={i.title}
+                        width={100}
+                        height={100}
+                      />
+                      <div className="title">{i.title}</div>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {i.total > 6 ? (
+              <Link href={`/category/` + i.category.slug}>
+                <a className="link-more">More</a>
+              </Link>
+            ) : null}
+          </section>
+        ))}
       </div>
     </Layout>
   );
 }
+
+export const getStaticProps = async (ctx) => {
+  const dataForHome = data?.data?.dataForHome;
+  // const categories = games.map((i) => i.category);
+  const games = dataForHome.slice().sort((i) => (i.total < 6 ? 1 : -1)); // 数量小于6的分类排序后置
+
+  return {
+    props: {
+      games,
+      // categories,
+    },
+  };
+};

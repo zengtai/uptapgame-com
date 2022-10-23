@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Basic */
 html,
 body {
-  @apply bg-slate-600;
+  @apply bg-slate-600 font-['Nunito'];
 }
 
 /* Layout */
@@ -13,20 +14,32 @@ body {
 }
 
 /* Navbar */
-.home-button {
-  @apply absolute left-0 -top-9 text-slate-700 xl:-top-2 xl:w-20 xl:h-20 xl:rounded-full flex justify-center items-center xl:bg-gradient-to-br xl:from-slate-300 xl:bg-slate-400/40 xl:backdrop-blur-sm xl:hover:backdrop-blur-none xl:transform xl:duration-500;
+.site-nav {
+  @apply m-4 relative;
 }
-.menu-button {
+.home-button {
+  @apply text-slate-700 xl:-top-2 xl:w-20 xl:absolute xl:justify-center xl:h-20 xl:rounded-full flex items-center xl:bg-gradient-to-br xl:from-slate-300 xl:bg-slate-400/40 xl:backdrop-blur-sm xl:hover:backdrop-blur-none xl:transform xl:duration-500;
+}
+/* .home-button {
+  @apply absolute left-0 -top-9 text-slate-700 xl:-top-2 xl:w-20 xl:h-20 xl:rounded-full flex justify-center items-center xl:bg-gradient-to-br xl:from-slate-300 xl:bg-slate-400/40 xl:backdrop-blur-sm xl:hover:backdrop-blur-none xl:transform xl:duration-500;
+} */
+/* .menu-button {
   @apply absolute right-0 -top-9 text-slate-700;
+} */
+.menu-button {
+  @apply absolute right-0 top-0 text-slate-700 xl:hidden;
 }
 .menu-panel {
-  @apply mt-12 xl:mt-0 xl:ml-3 p-3 xl:pl-20 bg-slate-800 text-slate-400 rounded-3xl shadow-lg;
+  @apply mt-4 xl:block xl:mt-0 xl:ml-3 p-3 xl:pl-20 bg-slate-800 text-slate-400 rounded-3xl shadow-lg xl:shadow-slate-300;
 }
 .menu-list {
   @apply grid grid-cols-3 gap-2 xl:flex;
 }
 .menu-item {
-  @apply border-2 border-slate-600 xl:border-transparent xl:bg-transparent py-1.5 px-2 rounded-xl bg-slate-700 xl:hover:bg-slate-700 xl:transform xl:duration-500 xl:ease-in-out text-center;
+  @apply border-2 border-slate-600 xl:border-transparent xl:bg-transparent py-1.5 xl:py-2 px-2 rounded-xl bg-slate-700 xl:hover:bg-slate-700 xl:transform xl:duration-500 xl:ease-in-out text-center text-sm;
+}
+.menu-item.current {
+  @apply border-slate-400 bg-slate-600 text-white;
 }
 /* Footer */
 .site-footer {
@@ -36,11 +49,54 @@ body {
   @apply bg-slate-700 text-slate-400 p-3;
 }
 .footer-nav ul {
-  @apply flex space-x-4 justify-center text-sm;
+  @apply flex space-x-4 justify-center text-xs;
 }
 .footer-logo {
   @apply h-10 mt-7 mx-auto;
 }
 .site-footer p {
   @apply pb-8 text-xs;
+}
+/* Home */
+.home {
+  @apply xl:mx-auto xl:grid xl:grid-cols-4;
+}
+.home section,
+.all section,
+.category section {
+  @apply mb-4;
+}
+.section-head {
+  @apply mx-8 mb-4 xl:mb-5 text-slate-700 flex space-x-2 items-center;
+}
+.section-head .h2 {
+  @apply text-lg font-bold;
+}
+
+.total {
+  @apply bg-slate-200 px-2 py-1 rounded-md text-xs;
+}
+.section-body {
+  @apply mx-8 grid grid-cols-4 gap-4 xl:grid-cols-12;
+}
+.home .section-head {
+  @apply xl:mb-3;
+}
+.home .section-body {
+  @apply grid-cols-3;
+}
+.list-item .image {
+  @apply rounded-xl shadow-lg shadow-slate-300 w-full;
+}
+
+.list-item .title {
+  @apply mt-2 text-xs text-center;
+}
+.link-more {
+  @apply block mx-8 uppercase text-sm text-center border mt-4 py-1 rounded-sm shadow-sm shadow-slate-100;
+}
+
+.category .section-head,
+.all .section-head {
+  @apply justify-center xl:justify-start;
 }
