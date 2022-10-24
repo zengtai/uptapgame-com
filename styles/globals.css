@@ -41,6 +41,7 @@ body {
 .menu-item.current {
   @apply border-lime-600 bg-emerald-700 text-yellow-200;
 }
+
 /* Footer */
 .site-footer {
   @apply bg-emerald-800 text-emerald-600 text-center;
@@ -57,6 +58,7 @@ body {
 .site-footer p {
   @apply pb-8 text-xs;
 }
+
 /* Home */
 .home {
   @apply xl:mx-auto xl:grid xl:grid-cols-4;
@@ -84,6 +86,7 @@ body {
 .home .section-body {
   @apply grid-cols-3;
 }
+
 /* List */
 .list-item .image {
   @apply rounded-xl shadow-lg xl:hover:shadow-black/20 xl:hover:scale-110 xl:transform xl:duration-300 shadow-black/10 w-full border-4 border-amber-300;
@@ -133,6 +136,7 @@ body {
 .detail .list {
   @apply mx-8 xl:mx-0 mb-4 grid xl:grid-cols-6 grid-cols-3 gap-4 xl:gap-6;
 }
+
 /* Page */
 .page p {
   @apply mb-4 text-sm;
