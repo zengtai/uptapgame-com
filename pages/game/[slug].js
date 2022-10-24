@@ -12,7 +12,7 @@ export default function Game({ game, relatedGames }) {
   useEffect(() => {
     // 推送Play按钮点击数据
     function handleClick(e) {
-      e.preventDefault();
+      process.env.NODE_ENV === `development` ? e.preventDefault() : null;
       console.log(`Event: `, e);
       gtag && gtag("event", "click_CTA", { game: game.title });
     }
