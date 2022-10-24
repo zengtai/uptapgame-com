@@ -58,8 +58,10 @@ export default function Category({ games, category }) {
 export const getStaticProps = async (ctx) => {
   const basicData = data?.data?.basicData;
 
-  let games = basicData.filter((i) => i.category.slug === ctx.params.slug);
-  games = games.slice().forEach((element) => {
+  let games = basicData
+    .slice()
+    .filter((i) => i.category.slug === ctx.params.slug);
+  games.forEach((element) => {
     delete element.id;
     delete element.rating;
     delete element.thumbnailUrl;
