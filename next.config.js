@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [`cdn.iwantalipstick.com`],
+    formats: [`image/avif`, `image/webp`],
   },
 };
 
