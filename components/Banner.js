@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { MODE } from "../lib/constants";
 export default function Banner({
   client,
@@ -11,9 +13,15 @@ export default function Banner({
   auto,
 }) {
   const devMode = process.env.NODE_ENV === `development` || MODE === "dev"; // 判断是否开发模式
-
+  useEffect(() => {
+    try {
+      (window.adsbygoogle || []).adsbygoogle.push({});
+    } catch (e) {
+      console.error(e.message);
+    }
+  }, []);
   return (
-    <div className={`banner` + className ? ` ` + className : ``}>
+    <div className={`banner` + (className ? ` ` + className : ``)}>
       <div className="text-center text-xs text-gray-300">ADVERTISEMENT</div>
       <ins
         className="adsbygoogle"

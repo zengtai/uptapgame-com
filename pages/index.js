@@ -5,10 +5,11 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 
 import { SITE_META } from "../lib/constants";
+import { getImageUrl } from "../lib/api";
 import data from "../data/games";
 
 export default function Home({ games }) {
-  // console.log(`games: `, games);
+  console.log(`games: `, games);
   // console.log(`categories: `, categories);
   return (
     <Layout>
@@ -35,10 +36,11 @@ export default function Home({ games }) {
                     <a>
                       <Image
                         className="image"
-                        src={i.thumbnailUrl}
+                        src={getImageUrl(i.title)}
                         alt={i.title}
                         width={100}
                         height={100}
+                        loading={index <= 1 ? `eager` : `lazy`}
                       />
                       <div className="title">{i.title}</div>
                     </a>
@@ -61,7 +63,15 @@ export default function Home({ games }) {
 export const getStaticProps = async (ctx) => {
   const dataForHome = data?.data?.dataForHome;
   // const categories = games.map((i) => i.category);
-  const games = dataForHome.slice().sort((i) => (i.total < 6 ? 1 : -1)); // 数量小于6的分类排序后置
+  let games = dataForHome.slice().sort((i) => (i.total < 6 ? 1 : -1)); // 数量小于6的分类排序后置
+
+  games.map((i) => {
+    i.data.forEach((element) => {
+      delete element.id;
+      delete element.thumbnailUrl;
+      delete element.rating;
+    });
+  });
 
   return {
     props: {

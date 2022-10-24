@@ -6,9 +6,12 @@ import Layout from "../../components/Layout";
 import List from "../../components/List";
 // import ListItem from "../../components/ListItem";
 import data from "../../data/games.json";
+import { getGameUrl, getImageUrl } from "../../lib/api";
 import { SITE_META } from "../../lib/constants";
 
 export default function Game({ game, relatedGames }) {
+  console.log(`game: `, game);
+  console.log(`relatedGames: `, relatedGames);
   useEffect(() => {
     // 推送Play按钮点击数据
     function handleClick(e) {
@@ -29,10 +32,11 @@ export default function Game({ game, relatedGames }) {
           <div className="game-meta">
             <Image
               className="image"
-              src={game.thumbnailUrl}
+              src={getImageUrl(game.title)}
               width={200}
               height={200}
               alt={game.title}
+              loading={`eager`}
             />
             <div>
               <h1 className="title">{game.title}</h1>
@@ -46,7 +50,7 @@ export default function Game({ game, relatedGames }) {
               </div>
             </div>
           </div>
-          <Link href={game.url}>
+          <Link href={getGameUrl(game.title)}>
             <a className="play-btn" title={`Play ` + game.title + ` Now`}>
               Play Now
             </a>
@@ -68,11 +72,27 @@ export default function Game({ game, relatedGames }) {
 }
 
 export const getStaticProps = async (ctx) => {
-  const fullData = data?.data?.fullData;
-  const game = fullData.find((i) => i.slug === ctx.params.slug);
-  const relatedGames = fullData
+  let fullData = data?.data?.fullData;
+  fullData.slice().forEach((game) => {
+    delete game.id;
+    delete game.appid;
+    delete game.thumbnailUrl;
+    delete game.url;
+  });
+
+  let game = fullData.find((i) => i.slug === ctx.params.slug);
+
+  let relatedGames = fullData
     .filter((i) => i.slug !== ctx.params.slug)
     .slice(0, 12);
+
+  relatedGames.slice().forEach((game) => {
+    delete game.rating;
+    delete game.description;
+    delete game.played;
+    delete game.creation_date;
+  });
+
   return {
     props: {
       game,

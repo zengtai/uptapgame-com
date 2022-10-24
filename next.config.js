@@ -6,6 +6,9 @@ const nextConfig = {
     domains: [`cdn.iwantalipstick.com`],
     formats: [`image/avif`, `image/webp`],
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === `development` ? false : true,
+  },
 };
 
 module.exports = nextConfig;

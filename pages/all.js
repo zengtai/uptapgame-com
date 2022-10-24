@@ -5,9 +5,10 @@ import Layout from "../components/Layout";
 import { SITE_META } from "../lib/constants";
 import Link from "next/link";
 import data from "../data/games";
+import { getImageUrl } from "../lib/api";
 
 export default function AllGames({ games }) {
-  // console.log(`all games: `, games);
+  console.log(`all games: `, games);
   return (
     <Layout>
       <Head>
@@ -26,16 +27,17 @@ export default function AllGames({ games }) {
             <span className="total">{games.length}</span>
           </div>
           <ul className={`section-body`}>
-            {games.map((i) => (
+            {games.map((i, index) => (
               <li key={i.slug} className="list-item">
                 <Link href={`/game/` + i.slug}>
                   <a>
                     <Image
                       className="image"
-                      src={i.thumbnailUrl}
+                      src={getImageUrl(i.title)}
                       alt={i.title}
                       width={100}
                       height={100}
+                      loading={index <= 9 ? `eager` : `lazy`}
                     />
                     <div className="title">{i.title}</div>
                   </a>
@@ -53,8 +55,12 @@ export default function AllGames({ games }) {
 }
 
 export const getStaticProps = async (ctx) => {
-  const games = data?.data?.basicData;
-
+  let games = data?.data?.basicData;
+  games.forEach((element) => {
+    delete element.id;
+    delete element.rating;
+    delete element.thumbnailUrl;
+  });
   return {
     props: {
       games,

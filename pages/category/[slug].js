@@ -6,8 +6,10 @@ import Link from "next/link";
 import { SITE_META } from "../../lib/constants";
 
 import data from "../../data/games";
+import { getImageUrl } from "../../lib/api";
 
 export default function Category({ games, category }) {
+  console.log(`games: `, games);
   return (
     <Layout>
       <Head>
@@ -26,16 +28,17 @@ export default function Category({ games, category }) {
             <span className="total">{games.length}</span>
           </div>
           <ul className={`section-body`}>
-            {games.map((i) => (
+            {games.map((i, index) => (
               <li key={i.slug} className="list-item">
                 <Link href={`/game/` + i.slug}>
                   <a>
                     <Image
                       className="image"
-                      src={i.thumbnailUrl}
+                      src={getImageUrl(i.title)}
                       alt={i.title}
                       width={100}
                       height={100}
+                      loading={index <= 9 ? `eager` : `lazy`}
                     />
                     <div className="title">{i.title}</div>
                   </a>
@@ -55,7 +58,12 @@ export default function Category({ games, category }) {
 export const getStaticProps = async (ctx) => {
   const basicData = data?.data?.basicData;
 
-  const games = basicData.filter((i) => i.category.slug === ctx.params.slug);
+  let games = basicData.filter((i) => i.category.slug === ctx.params.slug);
+  games.forEach((element) => {
+    delete element.id;
+    delete element.rating;
+    delete element.thumbnailUrl;
+  });
 
   return {
     props: {

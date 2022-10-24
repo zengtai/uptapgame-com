@@ -1,6 +1,6 @@
 import Image from "next/future/image";
 import Link from "next/link";
-import { IMAGE_FORMAT, IMAGE_PATH } from "../lib/constants";
+import { getImageUrl } from "../lib/api";
 
 export default function ListItem({ item }) {
   return (
@@ -9,7 +9,7 @@ export default function ListItem({ item }) {
         <a>
           <Image
             className="image"
-            src={IMAGE_PATH + item.appid + `.` + IMAGE_FORMAT}
+            src={getImageUrl(item.title)}
             alt={item.title}
             width={100}
             height={100}
