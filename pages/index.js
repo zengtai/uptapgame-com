@@ -65,7 +65,7 @@ export const getStaticProps = async (ctx) => {
   // const categories = games.map((i) => i.category);
   let games = dataForHome.slice().sort((i) => (i.total < 6 ? 1 : -1)); // 数量小于6的分类排序后置
 
-  games.map((i) => {
+  games.forEach((i) => {
     i.data.forEach((element) => {
       delete element.id;
       delete element.thumbnailUrl;

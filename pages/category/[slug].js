@@ -59,7 +59,7 @@ export const getStaticProps = async (ctx) => {
   const basicData = data?.data?.basicData;
 
   let games = basicData.filter((i) => i.category.slug === ctx.params.slug);
-  games.forEach((element) => {
+  games = games.slice().forEach((element) => {
     delete element.id;
     delete element.rating;
     delete element.thumbnailUrl;

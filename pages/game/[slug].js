@@ -83,10 +83,11 @@ export const getStaticProps = async (ctx) => {
   let game = fullData.find((i) => i.slug === ctx.params.slug);
 
   let relatedGames = fullData
+    .slice()
     .filter((i) => i.slug !== ctx.params.slug)
     .slice(0, 12);
 
-  relatedGames.slice().forEach((game) => {
+  relatedGames.forEach((game) => {
     delete game.rating;
     delete game.description;
     delete game.played;
