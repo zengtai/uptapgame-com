@@ -43,9 +43,9 @@ export default function AllGames({ games }) {
               </li>
             ))}
           </ul>
-          <Link href={`/category`}>
+          {/* <Link href={`/category`}>
             <a className="link-more">More</a>
-          </Link>
+          </Link> */}
         </section>
       </div>
     </Layout>

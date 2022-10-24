@@ -10,12 +10,13 @@ import { SITE_META } from "../../lib/constants";
 
 export default function Game({ game, relatedGames }) {
   useEffect(() => {
+    // 推送Play按钮点击数据
     function handleClick(e) {
       e.preventDefault();
       console.log(`Event: `, e);
       gtag && gtag("event", "click_CTA", { game: game.title });
     }
-    const CTA = document.querySelector(".play_btn");
+    const CTA = document.querySelector(".play-btn");
     CTA.addEventListener("click", handleClick);
   }, [game.title]);
   return (
@@ -25,35 +26,28 @@ export default function Game({ game, relatedGames }) {
       </Head>
       <div className="detail max-w-5xl mx-auto">
         <section className="mx-8 xl:mx-0">
-          <div className="flex mb-6 xl:space-x-0 space-x-4 xl:justify-between xl:flex-row-reverse">
+          <div className="game-meta">
             <Image
-              className="rounded-2xl border-8 border-amber-300 w-40 h-40 xl:w-[200px] xl:h-[200px] shadow-xl shadow-amber-200"
+              className="image"
               src={game.thumbnailUrl}
               width={200}
               height={200}
               alt={game.title}
             />
             <div>
-              <h1 className="text-2xl leading-6 xl:text-5xl my-2 xl:mb-6 font-black text-lime-700">
-                {game.title}
-              </h1>
-              <div className="xl:flex xl:flex-row xl:items-center xl:space-x-2">
-                <div className="text-center my-2 grid content-center text-xl font-bold text-white w-10 h-10 bg-orange-500 rounded-full">
+              <h1 className="title">{game.title}</h1>
+              <div className="game-info">
+                <div className="game-rating">
                   <span>{game.rating}</span>
                 </div>
                 <Link href={`/category/` + game.category.slug}>
-                  <a className="inline-block py-1 px-2 text-xs uppercase bg-lime-600 text-lime-200 rounded-md">
-                    {game.category.name}
-                  </a>
+                  <a className="game-category">{game.category.name}</a>
                 </Link>
               </div>
             </div>
           </div>
           <Link href={game.url}>
-            <a
-              className="play_btn block text-center bg-sky-500 xl:w-[300px] py-4 px-8 text-white rounded-full font-bold text-xl shadow-lg shadow-sky-600/20"
-              title={`Play ` + game.title + ` Now`}
-            >
+            <a className="play-btn" title={`Play ` + game.title + ` Now`}>
               Play Now
             </a>
           </Link>
@@ -66,10 +60,7 @@ export default function Game({ game, relatedGames }) {
           <div className="section-head">
             <h2 className="h2">You may also like</h2>
           </div>
-          <List
-            items={relatedGames}
-            className={`mx-8 xl:mx-0 mb-4 grid xl:grid-cols-6 grid-cols-3 gap-4 xl:gap-6`}
-          />
+          <List items={relatedGames} />
         </section>
       </div>
     </Layout>
