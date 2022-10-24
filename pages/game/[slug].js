@@ -73,7 +73,9 @@ export default function Game({ game, relatedGames }) {
 
 export const getStaticProps = async (ctx) => {
   let fullData = data?.data?.fullData;
-  fullData.slice().forEach((game) => {
+  let basicData = data?.data?.basicData;
+
+  fullData.forEach((game) => {
     delete game.id;
     delete game.appid;
     delete game.thumbnailUrl;
@@ -82,16 +84,15 @@ export const getStaticProps = async (ctx) => {
 
   let game = fullData.find((i) => i.slug === ctx.params.slug);
 
-  let relatedGames = fullData
+  let relatedGames = basicData
     .slice()
     .filter((i) => i.slug !== ctx.params.slug)
     .slice(0, 12);
 
-  relatedGames.forEach((game) => {
+  relatedGames.slice().forEach((game) => {
     delete game.rating;
-    delete game.description;
-    delete game.played;
-    delete game.creation_date;
+    delete game.thumbnailUrl;
+    delete game.id;
   });
 
   return {

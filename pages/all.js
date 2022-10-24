@@ -56,7 +56,7 @@ export default function AllGames({ games }) {
 
 export const getStaticProps = async (ctx) => {
   let games = data?.data?.basicData;
-  games.slice().forEach((element) => {
+  games.forEach((element) => {
     delete element.id;
     delete element.rating;
     delete element.thumbnailUrl;
