@@ -38,9 +38,9 @@ export default function Detail({ game }) {
           Play Now
         </a>
       </Link>
-      {/* <div className="mt-4">
-        <Banner slot={ADS_SLOTS_ID.detail} auto />
-      </div> */}
+
+      {/* <Banner auto /> */}
+
       <div className="description">
         <div className="title">Description</div>
         <div

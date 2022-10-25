@@ -10,6 +10,15 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === `development` ? false : true,
   },
+  trailingSlash: true,
+  // assetPrefix: `./`,
+  // basePath: "/web/channel/tpal/v1", // 20221025
+
+  // distDir: "build",
+  // generateBuildId: async () => {
+  //   // You can, for example, get the latest git commit hash here
+  //   return "20221025";
+  // },
 };
 
 module.exports = nextConfig;

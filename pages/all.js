@@ -2,26 +2,31 @@ import Head from "next/head";
 import Image from "next/future/image";
 import Layout from "../components/Layout";
 
-import { SITE_META } from "../lib/constants";
-import Link from "next/link";
+import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../lib/constants";
+// import Link from "next/link";
 import data from "../data/games";
-import { getImageUrl } from "../lib/api";
+// import { getImageUrl } from "../lib/api";
 import List from "../components/List";
+import Banner from "../components/Banner";
 
 export default function AllGames({ games }) {
   console.log(`all games: `, games);
   return (
     <Layout>
       <Head>
-        <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
-        <meta
-          name="description"
-          content="Play the newest online casual games for free!"
-        />
+        <title>{`All Games | ` + SITE_META.TAGLINE}</title>
+        <meta name="description" content={SITE_META.TAGLINE} />
         <link rel="icon" href="/favicon.ico" />
+        <script
+          id={`gads-init`}
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+          crossOrigin="anonymous"
+        />
       </Head>
 
       <div className={`archived all`}>
+        {/* <Banner auto /> */}
         <section>
           <div className={`section-head`}>
             <h2 className={`h2`}>All Games</h2>

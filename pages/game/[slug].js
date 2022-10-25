@@ -8,7 +8,8 @@ import List from "../../components/List";
 // import ListItem from "../../components/ListItem";
 import data from "../../data/games.json";
 import { getImageUrl } from "../../lib/api";
-import { SITE_META } from "../../lib/constants";
+import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../../lib/constants";
+import Banner from "../../components/Banner";
 
 export default function Game({ game, relatedGames }) {
   console.log(`game: `, game);
@@ -27,6 +28,13 @@ export default function Game({ game, relatedGames }) {
     <Layout>
       <Head>
         <title>{`Play ` + game.title + ` on ` + SITE_META.NAME}</title>
+        <meta name="description" content={SITE_META.TAGLINE} />
+        <script
+          id={`gads-init`}
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+          crossOrigin="anonymous"
+        />
       </Head>
       <div className="detail">
         <Detail game={game} />
@@ -37,31 +45,36 @@ export default function Game({ game, relatedGames }) {
           <div className={`section-body`}>
             <ul className="list">
               {relatedGames.map((i, index) => (
-                <li key={i.slug} className="item">
-                  <Link href={`/game/` + i.slug}>
-                    <a className="item-link">
-                      <Image
-                        className="image"
-                        src={getImageUrl(i.title)}
-                        alt={i.title}
-                        width={100}
-                        height={100}
-                        loading={index <= 9 ? `eager` : `lazy`}
-                      />
-                      <div>
-                        <div className="mt-1 mb-3 text-sky-700">{i.title}</div>
+                <>
+                  <li key={i.slug} className="item">
+                    <Link href={`/game/` + i.slug}>
+                      <a className="item-link">
+                        <Image
+                          className="image"
+                          src={getImageUrl(i.title)}
+                          alt={i.title}
+                          width={100}
+                          height={100}
+                          loading={index <= 9 ? `eager` : `lazy`}
+                        />
                         <div>
-                          <span className="mr-3 bg-star bg-no-repeat pl-6 font-bold text-orange-500">
-                            {i.rating}
-                          </span>
-                          <span className="bg-play bg-left bg-no-repeat pl-7 text-sm text-slate-400">
-                            {i.played}
-                          </span>
+                          <div className="mt-1 mb-3 text-sky-700">
+                            {i.title}
+                          </div>
+                          <div>
+                            <span className="mr-3 bg-star bg-no-repeat pl-6 font-bold text-orange-500">
+                              {i.rating}
+                            </span>
+                            <span className="bg-play bg-left bg-no-repeat pl-7 text-sm text-slate-400">
+                              {i.played}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </Link>
-                </li>
+                      </a>
+                    </Link>
+                  </li>
+                  {/* {index === 3 || index === 7 ? <Banner auto /> : null} */}
+                </>
               ))}
             </ul>
           </div>

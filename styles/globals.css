@@ -144,7 +144,7 @@ body {
 }
 /* Detail */
 .game-info {
-  @apply mb-4 flex space-x-4 bg-sky-100 p-2 xl:flex-row-reverse xl:justify-between xl:space-x-0 xl:bg-transparent;
+  @apply mb-4 flex space-x-4 bg-sky-100 p-4 xl:flex-row-reverse xl:justify-between xl:space-x-0 xl:bg-transparent;
 
   .title {
     @apply mt-2 text-xl font-black leading-6 text-sky-700 xl:mb-6 xl:text-5xl;
@@ -181,14 +181,20 @@ body {
     @apply mx-4 text-lg xl:mx-6 xl:text-xl;
   }
   .list {
-    @apply mx-2 mb-6 grid gap-2 xl:grid-cols-3 xl:gap-4;
+    @apply mb-6 grid gap-2 xl:grid-cols-3 xl:gap-4;
+    .item {
+      @apply mx-2;
+    }
+    .image {
+      @apply h-16 w-16;
+    }
   }
   .section-body {
     @apply xl:mx-0 xl:grid-cols-3;
   }
 }
 .item-link {
-  @apply flex space-x-3 rounded-2xl border p-2;
+  @apply flex space-x-3 rounded-2xl border bg-white p-2;
 }
 
 /* Page */
@@ -205,4 +211,9 @@ body {
   ul {
     @apply my-2 ml-4 list-outside list-disc;
   }
+}
+
+/* ad */
+.adsbygoogle {
+  @apply mx-auto w-full bg-black/5;
 }
