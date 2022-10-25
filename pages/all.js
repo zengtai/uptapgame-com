@@ -6,6 +6,7 @@ import { SITE_META } from "../lib/constants";
 import Link from "next/link";
 import data from "../data/games";
 import { getImageUrl } from "../lib/api";
+import List from "../components/List";
 
 export default function AllGames({ games }) {
   console.log(`all games: `, games);
@@ -20,31 +21,15 @@ export default function AllGames({ games }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`all`}>
+      <div className={`archived all`}>
         <section>
           <div className={`section-head`}>
             <h2 className={`h2`}>All Games</h2>
             <span className="total">{games.length}</span>
           </div>
-          <ul className={`section-body`}>
-            {games.map((i, index) => (
-              <li key={i.slug} className="item">
-                <Link href={`/game/` + i.slug}>
-                  <a>
-                    <Image
-                      className="image"
-                      src={getImageUrl(i.title)}
-                      alt={i.title}
-                      width={100}
-                      height={100}
-                      loading={index <= 9 ? `eager` : `lazy`}
-                    />
-                    <div className="title">{i.title}</div>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className={`section-body`}>
+            <List items={games} />
+          </div>
           {/* <Link href={`/category`}>
             <a className="link-more">More</a>
           </Link> */}

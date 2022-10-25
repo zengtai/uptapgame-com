@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-import { MODE } from "../lib/constants";
+import { ADSENSE_ID, MODE } from "../lib/constants";
 export default function Banner({
-  client,
+  client = ADSENSE_ID,
   slot,
   format,
   responsive,

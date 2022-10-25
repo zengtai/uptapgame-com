@@ -7,6 +7,8 @@ import Link from "next/link";
 import { SITE_META } from "../lib/constants";
 import { getImageUrl } from "../lib/api";
 import data from "../data/games";
+import List from "../components/List";
+import ListItem from "../components/ListItem";
 
 export default function Home({ games }) {
   console.log(`games: `, games);
@@ -15,10 +17,7 @@ export default function Home({ games }) {
     <Layout>
       <Head>
         <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
-        <meta
-          name="description"
-          content="Play the newest online casual games for free!"
-        />
+        <meta name="description" content={SITE_META.TAGLINE} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -31,27 +30,9 @@ export default function Home({ games }) {
                 <Link href={`/category/` + i.category.slug}>{i.total}</Link>
               </span>
             </div>
-            <ul className={`section-body`}>
-              {i.data.slice(0, 4).map((i) => (
-                <li className="item" key={i.slug}>
-                  <Link href={`/game/` + i.slug}>
-                    <a className="relative">
-                      <Image
-                        className="image"
-                        src={getImageUrl(i.title)}
-                        alt={i.title}
-                        width={100}
-                        height={100}
-                        loading={index <= 1 ? `eager` : `lazy`}
-                      />
-                      <div className="rating">
-                        <span>{i.rating}</span>
-                      </div>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="section-body">
+              <List items={i.data.slice(0, 4)} option={[`rating`]} />
+            </div>
           </section>
         ))}
       </div>

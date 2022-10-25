@@ -3,19 +3,19 @@ import Link from "next/link";
 import { SITE_META } from "../lib/constants";
 import Logo from "../public/brand/playamusements-logo.png";
 // import { useRouter } from "next/router";
-export default function Footer(params) {
+export default function Footer() {
   return (
     <footer className="site-footer">
       <nav className="footer-nav">
         <ul>
           <li>
-            <Link href={`/about`}>About</Link>
+            <Link href={`/p/about`}>About</Link>
           </li>
           <li>
-            <Link href={`/privacy`}>Privacy Policy</Link>
+            <Link href={`/p/privacy`}>Privacy Policy</Link>
           </li>
           <li>
-            <Link href={`/terms`}>Terms of Use</Link>
+            <Link href={`/p/terms`}>Terms of Use</Link>
           </li>
         </ul>
       </nav>

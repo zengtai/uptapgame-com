@@ -21,58 +21,60 @@ export default function Category({ games, category }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`category`}>
+      <div className={`archived`}>
         <section>
           <div className={`section-head`}>
             <h2 className={`h2`}>{category.name + ` Games`}</h2>
             <span className="total">{games.length}</span>
           </div>
-          <ul className={`section-body`}>
-            {games.map((i, index) => (
-              <li key={i.slug} className="item relative">
-                {index < 10 ? (
-                  <div className="absolute grid items-center top-1 left-1 z-10 bg-white w-7 h-7 font-bold rounded-full text-center">
-                    <span
-                      className={
-                        index < 1
-                          ? `text-orange-500`
-                          : index < 2
-                          ? `text-sky-500`
-                          : index < 3
-                          ? `text-lime-500`
-                          : `text-slate-400 text-sm`
-                      }
-                    >
-                      {index + 1}
-                    </span>
-                  </div>
-                ) : null}
-                <Link href={`/game/` + i.slug}>
-                  <a className="flex h-24 space-x-3 p-2 border rounded-2xl">
-                    <Image
-                      className="image"
-                      src={getImageUrl(i.title)}
-                      alt={i.title}
-                      width={100}
-                      height={100}
-                      loading={index <= 9 ? `eager` : `lazy`}
-                    />
-                    <div>
-                      <div className="mt-1 mb-3 text-sky-700">{i.title}</div>
-                      <div>
-                        <span className="bg-star mr-3 pl-6 bg-no-repeat text-orange-500 font-bold">
-                          {i.rating}
-                        </span>
-                        <span className="bg-play pl-7 bg-no-repeat bg-left text-sm text-slate-400">
-                          {i.played}
-                        </span>
-                      </div>
+          <div className={`section-body`}>
+            <ul className="grid gap-2 xl:grid-cols-5 xl:gap-4">
+              {games.map((i, index) => (
+                <li key={i.slug} className="item">
+                  {index < 10 ? (
+                    <div className="badge">
+                      <span
+                        className={
+                          index < 1
+                            ? `text-orange-500`
+                            : index < 2
+                            ? `text-sky-500`
+                            : index < 3
+                            ? `text-lime-500`
+                            : `text-sm text-slate-400`
+                        }
+                      >
+                        {index + 1}
+                      </span>
                     </div>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  ) : null}
+                  <Link href={`/game/` + i.slug}>
+                    <a className="flex space-x-3 rounded-2xl border p-2">
+                      <Image
+                        className="image"
+                        src={getImageUrl(i.title)}
+                        alt={i.title}
+                        width={100}
+                        height={100}
+                        loading={index <= 9 ? `eager` : `lazy`}
+                      />
+                      <div>
+                        <div className="mt-1 mb-3 text-sky-700">{i.title}</div>
+                        <div>
+                          <span className="mr-3 bg-star bg-no-repeat pl-6 font-bold text-orange-500">
+                            {i.rating}
+                          </span>
+                          <span className="bg-play bg-left bg-no-repeat pl-7 text-sm text-slate-400">
+                            {i.played}
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           {/* <Link href={`/category`}>
             <a className="link-more">More</a>
           </Link> */}

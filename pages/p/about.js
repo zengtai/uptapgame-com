@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Layout from "../components/Layout";
-import { SITE_META } from "../lib/constants";
-import { FEATURED_GAMES } from "../lib/constants";
+import Layout from "../../components/Layout";
+import { FEATURED_GAMES, SITE_META } from "../../lib/constants";
 
 export default function About(params) {
   const toTitle = (name) =>
