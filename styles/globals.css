@@ -151,7 +151,7 @@ body {
   @apply xl:flex xl:flex-row xl:items-center xl:space-x-2;
 }
 .game-rating {
-  @apply text-center my-2 grid content-center font-bold text-white w-8 h-8 bg-orange-500 rounded-full;
+  @apply text-center my-2 grid content-center font-bold text-white w-8 h-8 xl:h-12 xl:w-12 bg-orange-500 rounded-full;
 }
 .game-category {
   @apply inline-block py-1 px-2 text-xs uppercase bg-lime-600 text-lime-200 rounded-md;

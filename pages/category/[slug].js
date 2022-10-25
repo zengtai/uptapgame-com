@@ -85,17 +85,15 @@ export default function Category({ games, category }) {
 export const getStaticProps = async (ctx) => {
   const fullData = data?.data?.fullData;
 
-  let games = fullData
-    .slice()
-    .filter((i) => i.category.slug === ctx.params.slug);
-  games.forEach((element) => {
-    delete element.id;
-    delete element.description;
-    delete element.creation_date;
-    delete element.thumbnailUrl;
-    delete element.url;
-    delete element.appid;
-  });
+  let games = [];
+  let tmp = fullData.slice().filter((i) => i.category.slug === ctx.params.slug);
+  games = tmp.map((game) => ({
+    category: game.category,
+    title: game.title,
+    slug: game.slug,
+    rating: game.rating,
+    played: game.played,
+  }));
 
   return {
     props: {
