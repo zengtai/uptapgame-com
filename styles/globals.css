@@ -69,7 +69,7 @@ body {
   @apply font-bold;
 }
 .total {
-  @apply bg-sky-100 px-2 py-1 rounded-md text-xs;
+  @apply bg-cyan-100 px-2 py-1 rounded-md text-xs;
 }
 .total a {
   @apply bg-no-repeat pl-5 bg-chart;
@@ -145,7 +145,7 @@ body {
   @apply rounded-2xl border-4 xl:border-8 border-amber-300 w-28 h-28 xl:w-[200px] xl:h-[200px] xl:shadow-xl xl:shadow-amber-200;
 }
 .detail .description {
-  @apply p-4 my-4 xl:my-6 rounded-lg bg-amber-200 text-sky-800 text-sm xl:text-base;
+  @apply p-4 my-4 xl:my-6 rounded-lg bg-sky-200 text-sky-800 text-sm xl:text-base;
 }
 .game-info {
   @apply xl:flex xl:flex-row xl:items-center xl:space-x-2;
@@ -164,6 +164,9 @@ body {
 }
 
 /* Page */
+.page .section-head {
+  @apply mx-8;
+}
 .page p {
   @apply mb-4 text-sm;
 }

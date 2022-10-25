@@ -20,7 +20,7 @@ export default function About(params) {
           <div className="section-head">
             <h2 className="h2">About</h2>
           </div>
-          <div className="mx-8 p-4 rounded-md text-yellow-900 mb-4 bg-amber-200">
+          <div className="mx-8 p-4 rounded-md text-sky-900 mb-4 bg-sky-200">
             <p>Welcome to {SITE_META.NAME}!</p>
             <p>
               Our website is the leading platform for free online gaming,

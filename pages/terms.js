@@ -13,7 +13,7 @@ export default function Terms(params) {
           <div className="section-head">
             <h2 className="h2">Terms of Use</h2>
           </div>
-          <div className="mx-8 p-4 rounded-md text-yellow-900 mb-4 bg-amber-200">
+          <div className="mx-8 p-4 rounded-md text-sky-900 mb-4 bg-sky-200">
             <p>
               The {SITE_META.NAME} website located at {SITE_META.URL} is a
               copyrighted work belonging to {SITE_META.NAME}. Certain features

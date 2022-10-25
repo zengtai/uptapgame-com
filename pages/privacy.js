@@ -13,7 +13,7 @@ export default function Privacy(params) {
           <div className="section-head">
             <h2 className="h2">Privacy Policy</h2>
           </div>
-          <div className="mx-8 p-4 rounded-md text-yellow-900 mb-4 bg-amber-200">
+          <div className="mx-8 p-4 rounded-md text-sky-900 mb-4 bg-sky-200">
             <p>
               At {SITE_META.NAME}, accessible from {SITE_META.URL}, one of our
               main priorities is the privacy of our visitors. This Privacy
