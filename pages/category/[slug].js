@@ -29,7 +29,7 @@ export default function Category({ games, category }) {
           </div>
           <ul className={`section-body`}>
             {games.map((i, index) => (
-              <li key={i.slug} className="list-item relative">
+              <li key={i.slug} className="item relative">
                 {index < 10 ? (
                   <div className="absolute grid items-center top-1 left-1 z-10 bg-white w-7 h-7 font-bold rounded-full text-center">
                     <span

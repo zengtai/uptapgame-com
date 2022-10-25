@@ -4,7 +4,7 @@ import { getImageUrl } from "../lib/api";
 
 export default function ListItem({ item }) {
   return (
-    <li className="list-item">
+    <li className="item">
       <Link href={`/game/` + item.slug}>
         <a>
           <Image

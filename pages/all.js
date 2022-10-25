@@ -28,7 +28,7 @@ export default function AllGames({ games }) {
           </div>
           <ul className={`section-body`}>
             {games.map((i, index) => (
-              <li key={i.slug} className="list-item">
+              <li key={i.slug} className="item">
                 <Link href={`/game/` + i.slug}>
                   <a>
                     <Image
