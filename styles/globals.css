@@ -124,10 +124,10 @@ body {
 .all .h2 {
   @apply text-xl;
 }
-.category .section-body,
-.detail .section-body {
+.category .section-body {
   @apply grid-cols-1 xl:grid-cols-5;
 }
+
 /* Detail */
 .detail .section-head {
   @apply xl:mx-0 mx-4;
@@ -160,9 +160,11 @@ body {
   @apply block text-center bg-sky-500 xl:w-[300px] py-4 px-8 text-white rounded-full font-bold text-xl shadow-lg shadow-sky-600/20;
 }
 .detail .list {
-  @apply mx-8 xl:mx-0 mb-4 grid xl:grid-cols-6 grid-cols-3 gap-4 xl:gap-6;
+  @apply mx-8 xl:mx-0 mb-4 grid xl:grid-cols-4 grid-cols-3 gap-4 xl:gap-6;
 }
-
+.detail .section-body {
+  @apply grid-cols-1 xl:grid-cols-3 xl:mx-0;
+}
 /* Page */
 .page .section-head {
   @apply mx-8;
