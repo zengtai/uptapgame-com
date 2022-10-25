@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        chart: "url('../public/chart.svg')",
+        players: "url('../public/players.svg')",
+        play: "url('../public/play.svg')",
+        star: "url('../public/star.svg')",
+      },
+    },
   },
   plugins: [],
 };

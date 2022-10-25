@@ -20,7 +20,7 @@ export default function AllGames({ games }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`all xl:mx-auto`}>
+      <div className={`all`}>
         <section>
           <div className={`section-head`}>
             <h2 className={`h2`}>All Games</h2>

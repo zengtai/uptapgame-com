@@ -27,13 +27,15 @@ export default function Home({ games }) {
           <section key={i.category.slug}>
             <div className={`section-head`}>
               <h2 className={`h2`}>{i.category.name + ` Games`}</h2>
-              <span className="total">{i.total}</span>
+              <span className="total">
+                <Link href={`/category/` + i.category.slug}>{i.total}</Link>
+              </span>
             </div>
             <ul className={`section-body`}>
-              {i.data.map((i) => (
+              {i.data.slice(0, 4).map((i) => (
                 <li className="list-item" key={i.slug}>
                   <Link href={`/game/` + i.slug}>
-                    <a>
+                    <a className="relative">
                       <Image
                         className="image"
                         src={getImageUrl(i.title)}
@@ -42,17 +44,14 @@ export default function Home({ games }) {
                         height={100}
                         loading={index <= 1 ? `eager` : `lazy`}
                       />
-                      <div className="title">{i.title}</div>
+                      <div className="rating">
+                        <span>{i.rating}</span>
+                      </div>
                     </a>
                   </Link>
                 </li>
               ))}
             </ul>
-            {i.total > 6 ? (
-              <Link href={`/category/` + i.category.slug}>
-                <a className="link-more">More</a>
-              </Link>
-            ) : null}
           </section>
         ))}
       </div>
@@ -63,13 +62,12 @@ export default function Home({ games }) {
 export const getStaticProps = async (ctx) => {
   const dataForHome = data?.data?.dataForHome;
   // const categories = games.map((i) => i.category);
-  let games = dataForHome.slice().sort((i) => (i.total < 6 ? 1 : -1)); // 数量小于6的分类排序后置
+  let games = dataForHome.slice().sort((i) => (i.total < 4 ? 1 : -1)); // 数量小于6的分类排序后置
 
   games.forEach((i) => {
     i.data.forEach((element) => {
       delete element.id;
       delete element.thumbnailUrl;
-      delete element.rating;
     });
   });
 

@@ -5,12 +5,12 @@
 /* Basic */
 html,
 body {
-  @apply bg-emerald-800 font-['Nunito'];
+  @apply bg-sky-800 font-['Nunito'];
 }
 
 /* Layout */
 .wrapper {
-  @apply flex flex-col min-h-screen bg-amber-100;
+  @apply flex flex-col min-h-screen bg-slate-50;
 }
 
 /* Navbar */
@@ -18,36 +18,30 @@ body {
   @apply m-4 relative;
 }
 .home-button {
-  @apply text-emerald-700 w-6 h-6 xl:-top-2 xl:w-20 xl:absolute xl:justify-center xl:h-20 xl:rounded-full flex items-center xl:bg-gradient-to-br xl:from-yellow-300 xl:bg-yellow-400/40 xl:backdrop-blur-sm xl:hover:backdrop-blur-none xl:transform xl:duration-500;
+  @apply text-sky-800 xl:text-yellow-300 xl:w-12 xl:h-12 w-6 h-6 xl:top-2 xl:left-5 xl:absolute xl:justify-center xl:items-center xl:rounded-full flex items-center;
 }
-/* .home-button {
-  @apply absolute left-0 -top-9 text-yellow-700 xl:-top-2 xl:w-20 xl:h-20 xl:rounded-full flex justify-center items-center xl:bg-gradient-to-br xl:from-yellow-300 xl:bg-yellow-400/40 xl:backdrop-blur-sm xl:hover:backdrop-blur-none xl:transform xl:duration-500;
-} */
-/* .menu-button {
-  @apply absolute right-0 -top-9 text-yellow-700;
-} */
 .menu-button {
-  @apply absolute grid justify-center content-center w-6 h-6 right-0 top-0 text-emerald-700 xl:hidden;
+  @apply absolute grid justify-center content-center w-6 h-6 right-0 top-0 text-sky-800 xl:hidden;
 }
 .menu-panel {
-  @apply mt-4 xl:block xl:mt-0 xl:ml-3 p-3 xl:pl-20 bg-emerald-800 text-yellow-400 rounded-3xl shadow-lg xl:shadow-yellow-900/20;
+  @apply mt-4 xl:block xl:mt-0 xl:ml-3 p-3 xl:pl-20 bg-sky-900 text-cyan-500 rounded-3xl xl:rounded-full shadow-lg xl:shadow-yellow-900/20;
 }
 .menu-list {
   @apply grid grid-cols-3 gap-2 xl:flex;
 }
 .menu-item {
-  @apply border-2 border-emerald-700 xl:border-transparent xl:bg-transparent py-1.5 xl:py-2 px-2 rounded-xl bg-emerald-700 xl:hover:bg-emerald-700 xl:transform xl:duration-500 xl:ease-in-out text-center text-sm;
+  @apply border-2 border-sky-700 xl:border-transparent xl:bg-transparent py-1.5 xl:py-2 px-2 rounded-xl bg-sky-700 xl:hover:bg-sky-700 xl:transform xl:duration-500 xl:ease-in-out text-center text-sm;
 }
 .menu-item.current {
-  @apply border-lime-600 bg-emerald-700 text-yellow-200;
+  @apply border-cyan-700 bg-sky-800 text-cyan-300;
 }
 
 /* Footer */
 .site-footer {
-  @apply bg-emerald-800 text-emerald-600 text-center;
+  @apply bg-sky-800 text-cyan-500 text-center;
 }
 .footer-nav {
-  @apply bg-emerald-700 text-lime-500 p-3;
+  @apply bg-sky-700 text-cyan-400 p-3;
 }
 .footer-nav ul {
   @apply flex space-x-4 justify-center text-xs;
@@ -69,42 +63,74 @@ body {
   @apply mb-6;
 }
 .section-head {
-  @apply mx-8 mb-4 xl:mb-5 text-emerald-700 flex space-x-2 items-center;
+  @apply mx-2 xl:mx-8 mb-4 xl:mb-5 text-sky-700 flex justify-between space-x-2 items-center;
 }
 .section-head .h2 {
-  @apply text-lg font-bold;
+  @apply font-bold;
 }
 .total {
-  @apply bg-yellow-200 px-2 py-1 rounded-md text-xs;
+  @apply bg-sky-100 px-2 py-1 rounded-md text-xs;
 }
+.total a {
+  @apply bg-no-repeat pl-5 bg-chart;
+}
+/* .total a {
+  @apply bg-no-repeat pl-5 bg-[url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxNSAxNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAuNDk3NTU5IDQuMzc3MTJIMy40OTc1NlYxNC4xNzcxSDAuNDk3NTU5VjQuMzc3MTJaTTYuMDk3NTYgMC4xNzcxMjRIOC44OTc1NlYxNC4xNzcxSDYuMDk3NTZWMC4xNzcxMjRaTTExLjY5NzYgOC4xNzcxMkgxNC40OTc2VjE0LjE3NzFIMTEuNjk3NlY4LjE3NzEyWiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPgo=)];
+} */
 .section-body {
-  @apply mx-8 grid grid-cols-3 gap-4 xl:grid-cols-12;
+  @apply mx-2 xl:mx-8 grid grid-cols-3 gap-2 xl:grid-cols-12;
 }
+.home,
+.category {
+  @apply xl:mx-8;
+}
+
 .home .section-head {
   @apply xl:mb-3;
 }
 .home .section-body {
-  @apply grid-cols-3;
+  @apply grid-cols-4;
+}
+.home .rating {
+  @apply grid text-orange-500 font-bold items-center justify-center absolute -right-1 -bottom-1 w-6 h-6 rounded-full text-xs bg-white;
 }
 
 /* List */
+.list-item a {
+  @apply drop-shadow-sm bg-white;
+}
 .list-item .image {
-  @apply rounded-xl shadow-lg xl:hover:shadow-black/20 xl:hover:scale-110 xl:transform xl:duration-300 shadow-black/10 w-full border-4 border-amber-300;
+  @apply rounded-xl w-full;
+}
+.category .image,
+.detail .image {
+  @apply w-auto;
 }
 .list-item .title {
-  @apply mt-2 text-xs text-center text-emerald-900;
+  @apply mt-2 text-xs text-center text-sky-900;
 }
 .link-more {
-  @apply block mx-8 uppercase text-sm text-yellow-900 text-center border bg-amber-300 border-amber-400 mt-4 py-1 rounded-sm shadow-sm shadow-amber-200;
+  @apply block mx-8 uppercase text-sm text-sky-900 text-center border bg-amber-300 border-amber-400 mt-4 py-1 rounded-sm shadow-sm;
 }
 /* Category */
+.all {
+  @apply xl:mx-6;
+}
 .category .section-head,
 .all .section-head {
   @apply justify-center xl:justify-start;
 }
+.category .h2,
+.all .h2 {
+  @apply text-xl;
+}
+.category .section-body,
+.detail .section-body {
+  @apply grid-cols-1 xl:grid-cols-5;
+}
 /* Detail */
 .detail .section-head {
-  @apply xl:mx-0;
+  @apply xl:mx-0 mx-4;
 }
 .detail .h2 {
   @apply text-xl;
@@ -113,19 +139,19 @@ body {
   @apply flex mb-6 xl:space-x-0 space-x-4 xl:justify-between xl:flex-row-reverse;
 }
 .game-meta .title {
-  @apply text-2xl leading-6 xl:text-5xl my-2 xl:mb-6 font-black text-emerald-700;
+  @apply text-lg leading-6 xl:text-5xl mt-2 xl:mb-6 font-black text-sky-700;
 }
 .game-meta .image {
-  @apply rounded-2xl border-8 border-amber-300 w-40 h-40 xl:w-[200px] xl:h-[200px] xl:shadow-xl xl:shadow-amber-200;
+  @apply rounded-2xl border-4 xl:border-8 border-amber-300 w-28 h-28 xl:w-[200px] xl:h-[200px] xl:shadow-xl xl:shadow-amber-200;
 }
 .detail .description {
-  @apply p-4 my-4 xl:my-6 rounded-lg bg-amber-200 text-emerald-800 text-sm xl:text-base;
+  @apply p-4 my-4 xl:my-6 rounded-lg bg-amber-200 text-sky-800 text-sm xl:text-base;
 }
 .game-info {
   @apply xl:flex xl:flex-row xl:items-center xl:space-x-2;
 }
 .game-rating {
-  @apply text-center my-2 grid content-center text-xl font-bold text-white w-10 h-10 bg-orange-500 rounded-full;
+  @apply text-center my-2 grid content-center font-bold text-white w-8 h-8 bg-orange-500 rounded-full;
 }
 .game-category {
   @apply inline-block py-1 px-2 text-xs uppercase bg-lime-600 text-lime-200 rounded-md;

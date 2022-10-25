@@ -29,9 +29,26 @@ export default function Category({ games, category }) {
           </div>
           <ul className={`section-body`}>
             {games.map((i, index) => (
-              <li key={i.slug} className="list-item">
+              <li key={i.slug} className="list-item relative">
+                {index < 10 ? (
+                  <div className="absolute grid items-center top-1 left-1 z-10 bg-white w-7 h-7 font-bold rounded-full text-center">
+                    <span
+                      className={
+                        index < 1
+                          ? `text-orange-500`
+                          : index < 2
+                          ? `text-sky-500`
+                          : index < 3
+                          ? `text-lime-500`
+                          : `text-slate-400 text-sm`
+                      }
+                    >
+                      {index + 1}
+                    </span>
+                  </div>
+                ) : null}
                 <Link href={`/game/` + i.slug}>
-                  <a>
+                  <a className="flex h-24 space-x-3 p-2 border rounded-2xl">
                     <Image
                       className="image"
                       src={getImageUrl(i.title)}
@@ -40,7 +57,17 @@ export default function Category({ games, category }) {
                       height={100}
                       loading={index <= 9 ? `eager` : `lazy`}
                     />
-                    <div className="title">{i.title}</div>
+                    <div>
+                      <div className="mt-1 mb-3 text-sky-700">{i.title}</div>
+                      <div>
+                        <span className="bg-star mr-3 pl-6 bg-no-repeat text-orange-500 font-bold">
+                          {i.rating}
+                        </span>
+                        <span className="bg-play pl-7 bg-no-repeat bg-left text-sm text-slate-400">
+                          {i.played}
+                        </span>
+                      </div>
+                    </div>
                   </a>
                 </Link>
               </li>
@@ -56,15 +83,18 @@ export default function Category({ games, category }) {
 }
 
 export const getStaticProps = async (ctx) => {
-  const basicData = data?.data?.basicData;
+  const fullData = data?.data?.fullData;
 
-  let games = basicData
+  let games = fullData
     .slice()
     .filter((i) => i.category.slug === ctx.params.slug);
   games.forEach((element) => {
     delete element.id;
-    delete element.rating;
+    delete element.description;
+    delete element.creation_date;
     delete element.thumbnailUrl;
+    delete element.url;
+    delete element.appid;
   });
 
   return {
