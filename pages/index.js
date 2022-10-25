@@ -33,7 +33,7 @@ export default function Home({ games }) {
             </div>
             <ul className={`section-body`}>
               {i.data.slice(0, 4).map((i) => (
-                <li className="list-item" key={i.slug}>
+                <li className="item" key={i.slug}>
                   <Link href={`/game/` + i.slug}>
                     <a className="relative">
                       <Image

@@ -5,7 +5,7 @@
 /* Basic */
 html,
 body {
-  @apply bg-sky-800 font-['Nunito'];
+  @apply bg-sky-800;
 }
 
 /* Layout */
@@ -96,17 +96,17 @@ body {
 }
 
 /* List */
-.list-item a {
+.item a {
   @apply drop-shadow-sm bg-white;
 }
-.list-item .image {
+.item .image {
   @apply rounded-xl w-full;
 }
 .category .image,
 .detail .image {
   @apply w-auto;
 }
-.list-item .title {
+.item .title {
   @apply mt-2 text-xs text-center text-sky-900;
 }
 .link-more {
