@@ -112,9 +112,8 @@ export const getStaticProps = async (ctx) => {
   let game = fullData.find((i) => i.slug === ctx.params.slug);
 
   let relatedGames = [];
-  let tmp = Array.from(fullData)
-    .filter((i) => i.slug !== ctx.params.slug)
-    .slice(0, 12);
+  let tmp = fullData.slice();
+  tmp = tmp.filter((i) => i.slug !== ctx.params.slug).slice(0, 12);
 
   relatedGames = tmp.map((game) => ({
     category: game.category,
