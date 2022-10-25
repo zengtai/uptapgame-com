@@ -86,13 +86,13 @@ body {
 }
 
 .home .section-head {
-  @apply xl:mb-3;
+  @apply xl:mb-3 xl:text-lg;
 }
 .home .section-body {
-  @apply grid-cols-4;
+  @apply grid-cols-4 xl:grid-cols-2;
 }
 .home .rating {
-  @apply grid text-orange-500 font-bold items-center justify-center absolute -right-1 -bottom-1 w-6 h-6 rounded-full text-xs bg-white;
+  @apply grid text-orange-500 font-bold items-center justify-center absolute -right-1 -bottom-1 w-6 h-6 xl:h-10 xl:w-10 rounded-full text-xs xl:text-base bg-white;
 }
 
 /* List */
