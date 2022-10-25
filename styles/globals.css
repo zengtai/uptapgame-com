@@ -96,14 +96,19 @@ body {
 }
 
 /* List */
+
 .item a {
-  @apply drop-shadow-sm bg-white;
+  @apply drop-shadow-sm;
+}
+.all .item a .category .item a,
+.detail .item a {
+  @apply bg-white;
 }
 .home .item a {
   @apply block;
 }
 .item .image {
-  @apply rounded-xl h-20 w-20;
+  @apply rounded-xl w-full h-auto;
 }
 .category .image,
 .detail .image {

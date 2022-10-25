@@ -66,9 +66,9 @@ export default function Game({ game, relatedGames }) {
           </div>
           <ul className={`section-body`}>
             {relatedGames.map((i, index) => (
-              <li key={i.slug} className="item relative">
+              <li key={i.slug} className="item">
                 <Link href={`/game/` + i.slug}>
-                  <a className="flex space-x-3 p-2 border rounded-2xl">
+                  <a className="flex space-x-3 h-24 p-2 border rounded-2xl">
                     <Image
                       className="image"
                       src={getImageUrl(i.title)}
