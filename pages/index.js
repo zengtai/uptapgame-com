@@ -39,7 +39,9 @@ export default function Home({ games }) {
               <div className={`section-head`}>
                 <h2 className={`h2`}>{i.category.name + ` Games`}</h2>
                 <span className="total">
-                  <Link href={`/category/` + i.category.slug}>{i.total}</Link>
+                  <Link href={`/category/` + i.category.slug + `.html`}>
+                    {i.total}
+                  </Link>
                 </span>
               </div>
               <div className="section-body">
@@ -63,6 +65,7 @@ export const getStaticProps = async (ctx) => {
     i.data.forEach((element) => {
       delete element.id;
       delete element.thumbnailUrl;
+      element.appid = element.title.replace(/ /g, ``);
     });
   });
 

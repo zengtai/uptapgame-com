@@ -49,6 +49,7 @@ export const getStaticProps = async (ctx) => {
     delete element.id;
     delete element.rating;
     delete element.thumbnailUrl;
+    element.appid = element.title.replace(/ /g, ``);
   });
   return {
     props: {

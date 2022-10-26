@@ -72,7 +72,7 @@ export default function Navbar({ navItems }) {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="w-6 h-6"
+              className="h-6 w-6"
             >
               <path
                 fillRule="evenodd"
@@ -85,43 +85,43 @@ export default function Navbar({ navItems }) {
         <div className={(isOpen ? "" : "hidden ") + "menu-panel"}>
           <ul className="menu-list">
             <li className="menu-item">
-              <Link href={`/all`}>All</Link>
+              <Link href={`/all` + `.html`}>All</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/adventure`}>Adventure</Link>
+              <Link href={`/category/adventure` + `.html`}>Adventure</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/` + `arcade`}>Arcade</Link>
+              <Link href={`/category/` + `arcade` + `.html`}>Arcade</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/casual`}>Casual</Link>
+              <Link href={`/category/casual` + `.html`}>Casual</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/girl`}>Girl</Link>
+              <Link href={`/category/girl` + `.html`}>Girl</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/io`}>IO</Link>
+              <Link href={`/category/io` + `.html`}>IO</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/match-3`}>Match 3</Link>
+              <Link href={`/category/match-3` + `.html`}>Match 3</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/puzzle`}>Puzzle</Link>
+              <Link href={`/category/puzzle` + `.html`}>Puzzle</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/racing`}>Racing</Link>
+              <Link href={`/category/racing` + `.html`}>Racing</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/shooting`}>Shooting</Link>
+              <Link href={`/category/shooting` + `.html`}>Shooting</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/simulation`}>Simulation</Link>
+              <Link href={`/category/simulation` + `.html`}>Simulation</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/sports`}>Sports</Link>
+              <Link href={`/category/sports` + `.html`}>Sports</Link>
             </li>
             <li className="menu-item">
-              <Link href={`/category/strategy`}>Strategy</Link>
+              <Link href={`/category/strategy` + `.html`}>Strategy</Link>
             </li>
           </ul>
         </div>

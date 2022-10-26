@@ -2,13 +2,13 @@ import Image from "next/future/image";
 import Head from "next/head";
 import Link from "next/link";
 import { Fragment, useEffect } from "react";
-import Detail from "../../components/Detail";
-import Layout from "../../components/Layout";
+import Detail from "../components/Detail";
+import Layout from "../components/Layout";
 // import ListItem from "../../components/ListItem";
-import Banner from "../../components/Banner";
-import data from "../../data/games.json";
-import { getImageUrl } from "../../lib/api";
-import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../../lib/constants";
+import Banner from "../components/Banner";
+import data from "../data/games.json";
+import { getImageUrl } from "../lib/api";
+import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../lib/constants";
 import Script from "next/script";
 
 export default function Game({ game, relatedGames }) {
@@ -47,7 +47,7 @@ export default function Game({ game, relatedGames }) {
               {relatedGames.map((i, index) => (
                 <Fragment key={i.slug}>
                   <li className="item">
-                    <Link href={`/game/` + i.slug}>
+                    <Link href={`/` + i.appid + `.html`}>
                       <a className="item-link">
                         <Image
                           className="image"
@@ -95,16 +95,20 @@ export const getStaticProps = async (ctx) => {
 
   fullData.forEach((game) => {
     delete game.id;
-    delete game.appid;
+    // delete game.appid;
     delete game.thumbnailUrl;
     delete game.url;
   });
 
-  let game = fullData.find((i) => i.slug === ctx.params.slug);
+  let game = fullData.find(
+    (i) => i.appid === ctx.params.appid.replace(/\.html/g, ``)
+  );
 
   let relatedGames = [];
   let tmp = fullData.slice();
-  tmp = tmp.filter((i) => i.slug !== ctx.params.slug).slice(0, 12);
+  tmp = tmp
+    .filter((i) => i.appid !== ctx.params.appid.replace(/\.html/g, ``))
+    .slice(0, 12);
 
   relatedGames = tmp.map((game) => ({
     category: game.category,
@@ -112,6 +116,7 @@ export const getStaticProps = async (ctx) => {
     slug: game.slug,
     rating: game.rating,
     played: game.played,
+    appid: game.appid,
   }));
 
   return {
@@ -124,7 +129,9 @@ export const getStaticProps = async (ctx) => {
 
 export const getStaticPaths = async () => {
   const basicData = data?.data?.basicData;
-  const paths = basicData.map((i) => ({ params: { slug: i.slug } }));
+  const paths = basicData.map((i) => ({
+    params: { slug: i.slug, appid: i.title.replace(/ /g, ``) + `.html` },
+  }));
   return {
     paths,
     fallback: false,

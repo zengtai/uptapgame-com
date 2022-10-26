@@ -54,7 +54,7 @@ export default function Category({ games, category }) {
                         </span>
                       </div>
                     ) : null}
-                    <Link href={`/game/` + i.slug}>
+                    <Link href={`/` + i.appid + `.html`}>
                       <a className="flex space-x-3 rounded-2xl border p-2">
                         <Image
                           className="image"
@@ -104,13 +104,16 @@ export const getStaticProps = async (ctx) => {
   const fullData = data?.data?.fullData;
 
   let games = [];
-  let tmp = fullData.slice().filter((i) => i.category.slug === ctx.params.slug);
+  let tmp = fullData
+    .slice()
+    .filter((i) => i.category.slug === ctx.params.slug.replace(/\.html/g, ``));
   games = tmp.map((game) => ({
     category: game.category,
     title: game.title,
     slug: game.slug,
     rating: game.rating,
     played: game.played,
+    appid: game.appid,
   }));
 
   return {
@@ -125,7 +128,7 @@ export const getStaticPaths = async () => {
   const categories = data?.data?.categories;
   const paths = categories.map((i) => ({
     params: {
-      slug: i.slug,
+      slug: i.slug + `.html`,
     },
   }));
 
