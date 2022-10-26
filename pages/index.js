@@ -30,7 +30,7 @@ export default function Home({ games }) {
       <div className={`home`}>
         {games.map((i, index) => (
           <Fragment key={i.category.slug}>
-            {[3, 6, 9].includes(index) ? (
+            {[2, 6, 9].includes(index) ? (
               <Banner auto slot={ADS_SLOTS_ID.HOME} />
             ) : null}
             <section>

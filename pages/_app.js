@@ -1,6 +1,8 @@
+import "../public/nprogress.css";
 import "../styles/globals.css";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import NProgress from "nprogress";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
 import Head from "next/head";
@@ -10,11 +12,11 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const handleStart = (url) => {
       console.log(`Loading: ${url}`);
-      // NProgress.start();
+      NProgress.start();
     };
     const handleStop = (url) => {
       gtag.pageview(url);
-      // NProgress.done();
+      NProgress.done();
     };
 
     router.events.on("routeChangeStart", handleStart);
