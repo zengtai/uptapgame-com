@@ -8,6 +8,7 @@ import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../../lib/constants";
 import data from "../../data/games";
 import { getImageUrl } from "../../lib/api";
 import Banner from "../../components/Banner";
+import { Fragment } from "react";
 
 export default function Category({ games, category }) {
   console.log(`games: `, games);
@@ -39,8 +40,8 @@ export default function Category({ games, category }) {
           <div className={`section-body`}>
             <ul className="grid gap-2 xl:grid-cols-5 xl:gap-4">
               {games.map((i, index) => (
-                <>
-                  <li key={i.slug} className="item">
+                <Fragment key={i.slug}>
+                  <li className="item">
                     {index < 10 ? (
                       <div className="badge">
                         <span
@@ -84,8 +85,14 @@ export default function Category({ games, category }) {
                       </a>
                     </Link>
                   </li>
-                  {/* {index === 2 ? <Banner auto /> : null} */}
-                </>
+                  {index === 2 ? (
+                    <Banner
+                      auto
+                      format={[`horizontal`]}
+                      slot={ADS_SLOTS_ID.CATEGORY}
+                    />
+                  ) : null}
+                </Fragment>
               ))}
             </ul>
           </div>

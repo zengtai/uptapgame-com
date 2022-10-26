@@ -45,6 +45,8 @@ const Banner = ({
                   marginRight: "auto",
                 }
               : style
+              ? style
+              : { display: "block" }
           }
           data-ad-layout={layout}
           data-ad-format={format ? format : `auto`}

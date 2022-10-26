@@ -39,7 +39,7 @@ export default function Detail({ game }) {
         </a>
       </Link>
 
-      {/* <Banner auto /> */}
+      <Banner auto slot={ADS_SLOTS_ID.DETAIL} />
 
       <div className="description">
         <div className="title">Description</div>

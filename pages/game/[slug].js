@@ -1,7 +1,7 @@
 import Image from "next/future/image";
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import Detail from "../../components/Detail";
 import Layout from "../../components/Layout";
 import List from "../../components/List";
@@ -45,8 +45,8 @@ export default function Game({ game, relatedGames }) {
           <div className={`section-body`}>
             <ul className="list">
               {relatedGames.map((i, index) => (
-                <>
-                  <li key={i.slug} className="item">
+                <Fragment key={i.slug}>
+                  <li className="item">
                     <Link href={`/game/` + i.slug}>
                       <a className="item-link">
                         <Image
@@ -55,7 +55,7 @@ export default function Game({ game, relatedGames }) {
                           alt={i.title}
                           width={100}
                           height={100}
-                          loading={index <= 9 ? `eager` : `lazy`}
+                          loading={index <= 3 ? `eager` : `lazy`}
                         />
                         <div>
                           <div className="mt-1 mb-3 text-sky-700">
@@ -73,8 +73,14 @@ export default function Game({ game, relatedGames }) {
                       </a>
                     </Link>
                   </li>
-                  {/* {index === 3 || index === 7 ? <Banner auto /> : null} */}
-                </>
+                  {index === 3 || index === 7 ? (
+                    <Banner
+                      slot={ADS_SLOTS_ID.DETAIL}
+                      format={[`horizontal`]}
+                      auto
+                    />
+                  ) : null}
+                </Fragment>
               ))}
             </ul>
           </div>

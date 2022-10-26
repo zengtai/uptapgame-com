@@ -37,6 +37,9 @@ body {
 }
 .menu-item {
   @apply rounded-xl border-2 border-sky-700 bg-sky-700 py-1.5 px-2 text-center text-sm xl:transform xl:border-transparent xl:bg-transparent xl:py-2 xl:duration-500 xl:ease-in-out xl:hover:bg-sky-700;
+  a {
+    @apply block;
+  }
 }
 .menu-item.current {
   @apply border-cyan-700 bg-sky-800 text-cyan-300;

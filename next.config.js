@@ -12,13 +12,13 @@ const nextConfig = {
   },
   trailingSlash: true,
   // assetPrefix: `./`,
-  // basePath: "/web/channel/tpal/v1", // 20221025
+  basePath: "/web/channel/tpal/v1", // 20221026
 
   // distDir: "build",
-  // generateBuildId: async () => {
-  //   // You can, for example, get the latest git commit hash here
-  //   return "20221025";
-  // },
+  generateBuildId: async () => {
+    // You can, for example, get the latest git commit hash here
+    return "20221026";
+  },
 };
 
 module.exports = nextConfig;

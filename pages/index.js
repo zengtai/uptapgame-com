@@ -1,15 +1,15 @@
-import Image from "next/future/image";
 import Head from "next/head";
 import Layout from "../components/Layout";
 
 import Link from "next/link";
 
-import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../lib/constants";
+import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../lib/constants";
 // import { getImageUrl } from "../lib/api";
-import data from "../data/games";
 import List from "../components/List";
+import data from "../data/games";
 // import ListItem from "../components/ListItem";
 import Banner from "../components/Banner";
+import { Fragment } from "react";
 
 export default function Home({ games }) {
   console.log(`games: `, games);
@@ -30,9 +30,11 @@ export default function Home({ games }) {
 
       <div className={`home`}>
         {games.map((i, index) => (
-          <>
-            {/* {[2, 6, 9].includes(index) ? <Banner auto /> : null} */}
-            <section key={i.category.slug}>
+          <Fragment key={i.category.slug}>
+            {[3, 6, 9].includes(index) ? (
+              <Banner auto slot={ADS_SLOTS_ID.HOME} />
+            ) : null}
+            <section>
               <div className={`section-head`}>
                 <h2 className={`h2`}>{i.category.name + ` Games`}</h2>
                 <span className="total">
@@ -43,8 +45,8 @@ export default function Home({ games }) {
                 <List items={i.data.slice(0, 4)} option={[`rating`]} />
               </div>
             </section>
-            {/* {index === 11 ? <Banner auto /> : null} */}
-          </>
+            {index === 11 ? <Banner auto slot={ADS_SLOTS_ID.HOME} /> : null}
+          </Fragment>
         ))}
       </div>
     </Layout>
@@ -54,7 +56,7 @@ export default function Home({ games }) {
 export const getStaticProps = async (ctx) => {
   const dataForHome = data?.data?.dataForHome;
   // const categories = games.map((i) => i.category);
-  let games = dataForHome.slice().sort((i) => (i.total < 4 ? 1 : -1)); // 数量小于6的分类排序后置
+  let games = dataForHome.slice().sort((i) => (i.total < 4 ? 1 : -1)); // 数量小于4的分类排序后置
 
   games.forEach((i) => {
     i.data.forEach((element) => {

@@ -26,7 +26,7 @@ export default function AllGames({ games }) {
       </Head>
 
       <div className={`archived all`}>
-        {/* <Banner auto /> */}
+        <Banner auto slot={ADS_SLOTS_ID.CATEGORY} />
         <section>
           <div className={`section-head`}>
             <h2 className={`h2`}>All Games</h2>
