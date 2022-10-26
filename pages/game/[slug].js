@@ -9,6 +9,7 @@ import Banner from "../../components/Banner";
 import data from "../../data/games.json";
 import { getImageUrl } from "../../lib/api";
 import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../../lib/constants";
+import Script from "next/script";
 
 export default function Game({ game, relatedGames }) {
   console.log(`game: `, game);
@@ -27,14 +28,14 @@ export default function Game({ game, relatedGames }) {
     <Layout>
       <Head>
         <title>{`Play ` + game.title + ` on ` + SITE_META.NAME}</title>
-
-        <script
-          id={`gads-init`}
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-          crossOrigin="anonymous"
-        />
       </Head>
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+        strategy={`beforeInteractive`}
+      />
       <div className="detail">
         <Detail game={game} />
         <section>

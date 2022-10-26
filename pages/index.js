@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
+import Script from "next/script";
 
 import Link from "next/link";
 
@@ -19,13 +20,14 @@ export default function Home({ games }) {
       <Head>
         <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
-        <script
-          id={`gads-init`}
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-          crossOrigin="anonymous"
-        />
       </Head>
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+        strategy={`beforeInteractive`}
+      />
 
       <div className={`home`}>
         {games.map((i, index) => (

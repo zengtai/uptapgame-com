@@ -9,6 +9,7 @@ import data from "../../data/games";
 import { getImageUrl } from "../../lib/api";
 import Banner from "../../components/Banner";
 import { Fragment } from "react";
+import Script from "next/script";
 
 export default function Category({ games, category }) {
   console.log(`games: `, games);
@@ -16,14 +17,14 @@ export default function Category({ games, category }) {
     <Layout>
       <Head>
         <title>{category.name + ` Games | ` + SITE_META.NAME}</title>
-
-        <script
-          id={`gads-init`}
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-          crossOrigin="anonymous"
-        />
       </Head>
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+        strategy={`beforeInteractive`}
+      />
 
       <div className={`archived`}>
         <section>
