@@ -3,17 +3,18 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
+import NProgress from "nprogress";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     const handleStart = (url) => {
       console.log(`Loading: ${url}`);
-      // NProgress.start();
+      NProgress.start();
     };
     const handleStop = (url) => {
       gtag.pageview(url);
-      // NProgress.done();
+      NProgress.done();
     };
 
     router.events.on("routeChangeStart", handleStart);

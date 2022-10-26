@@ -10,6 +10,7 @@ import data from "../../data/games.json";
 import { getImageUrl } from "../../lib/api";
 import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../../lib/constants";
 import Banner from "../../components/Banner";
+import Script from "next/script";
 
 export default function Game({ game, relatedGames }) {
   console.log(`game: `, game);
@@ -29,13 +30,13 @@ export default function Game({ game, relatedGames }) {
       <Head>
         <title>{`Play ` + game.title + ` on ` + SITE_META.NAME}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
-        <script
-          id={`gads-init`}
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-          crossOrigin="anonymous"
-        />
       </Head>
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <div className="detail">
         <Detail game={game} />
         <section>

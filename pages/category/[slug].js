@@ -8,6 +8,7 @@ import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../../lib/constants";
 import data from "../../data/games";
 import { getImageUrl } from "../../lib/api";
 import Banner from "../../components/Banner";
+import Script from "next/script";
 
 export default function Category({ games, category }) {
   console.log(`games: `, games);
@@ -16,19 +17,13 @@ export default function Category({ games, category }) {
       <Head>
         <title>{category.name + ` Games | ` + SITE_META.NAME}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
-        <link rel="icon" href="/favicon.ico" />
-        <Head>
-          <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
-          <meta name="description" content={SITE_META.TAGLINE} />
-          <link rel="icon" href="/favicon.ico" />
-          <script
-            id={`gads-init`}
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-            crossOrigin="anonymous"
-          />
-        </Head>
       </Head>
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
 
       <div className={`archived`}>
         <section>

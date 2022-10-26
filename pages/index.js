@@ -10,6 +10,7 @@ import data from "../data/games";
 import List from "../components/List";
 // import ListItem from "../components/ListItem";
 import Banner from "../components/Banner";
+import Script from "next/script";
 
 export default function Home({ games }) {
   console.log(`games: `, games);
@@ -19,15 +20,14 @@ export default function Home({ games }) {
       <Head>
         <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
-        <link rel="icon" href="/favicon.ico" />
-        <script
-          id={`gads-init`}
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-          crossOrigin="anonymous"
-        />
       </Head>
 
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <div className={`home`}>
         {games.map((i, index) => (
           <>

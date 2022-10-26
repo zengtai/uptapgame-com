@@ -8,6 +8,7 @@ import data from "../data/games";
 // import { getImageUrl } from "../lib/api";
 import List from "../components/List";
 import Banner from "../components/Banner";
+import Script from "next/script";
 
 export default function AllGames({ games }) {
   console.log(`all games: `, games);
@@ -16,15 +17,13 @@ export default function AllGames({ games }) {
       <Head>
         <title>{`All Games | ` + SITE_META.TAGLINE}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
-        <link rel="icon" href="/favicon.ico" />
-        <script
-          id={`gads-init`}
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-          crossOrigin="anonymous"
-        />
       </Head>
-
+      <Script
+        id={`gads-init`}
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+        crossOrigin="anonymous"
+      />
       <div className={`archived all`}>
         {/* <Banner auto /> */}
         <section>
