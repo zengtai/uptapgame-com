@@ -15,8 +15,7 @@ export default function AllGames({ games }) {
     <Layout>
       <Head>
         <title>{`All Games | ` + SITE_META.TAGLINE}</title>
-        <meta name="description" content={SITE_META.TAGLINE} />
-        <link rel="icon" href="/favicon.ico" />
+
         <script
           id={`gads-init`}
           async

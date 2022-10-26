@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -28,6 +29,9 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
   return (
     <>
+      <Head>
+        <link rel="icon" href={router.basePath + `/favicon.ico`} />
+      </Head>
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_ID}`}

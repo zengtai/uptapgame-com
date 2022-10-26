@@ -1,7 +1,7 @@
 import Image from "next/future/image";
 import Link from "next/link";
 import { SITE_META } from "../lib/constants";
-import Logo from "../public/brand/playamusements-logo.png";
+import Logo from "../public/brand/playgames-logo.png";
 // import { useRouter } from "next/router";
 export default function Footer() {
   return (

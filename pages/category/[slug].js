@@ -16,19 +16,13 @@ export default function Category({ games, category }) {
     <Layout>
       <Head>
         <title>{category.name + ` Games | ` + SITE_META.NAME}</title>
-        <meta name="description" content={SITE_META.TAGLINE} />
-        <link rel="icon" href="/favicon.ico" />
-        <Head>
-          <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
-          <meta name="description" content={SITE_META.TAGLINE} />
-          <link rel="icon" href="/favicon.ico" />
-          <script
-            id={`gads-init`}
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
-            crossOrigin="anonymous"
-          />
-        </Head>
+
+        <script
+          id={`gads-init`}
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+          crossOrigin="anonymous"
+        />
       </Head>
 
       <div className={`archived`}>

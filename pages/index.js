@@ -19,7 +19,6 @@ export default function Home({ games }) {
       <Head>
         <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
-        <link rel="icon" href="/favicon.ico" />
         <script
           id={`gads-init`}
           async
