@@ -2,13 +2,18 @@ import Image from "next/future/image";
 import Head from "next/head";
 import Link from "next/link";
 import { Fragment, useEffect } from "react";
-import Detail from "../components/Detail";
-import Layout from "../components/Layout";
+import Detail from "../../components/Detail";
+import Layout from "../../components/Layout";
 // import ListItem from "../../components/ListItem";
-import Banner from "../components/Banner";
-import data from "../data/games.json";
-import { getImageUrl } from "../lib/api";
-import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../lib/constants";
+import Banner from "../../components/Banner";
+import data from "../../data/games.json";
+import { getImageUrl } from "../../lib/api";
+import {
+  ADSENSE_ID,
+  ADS_SLOTS_ID,
+  SITE_META,
+  EXCLUED_GAMES,
+} from "../../lib/constants";
 import Script from "next/script";
 
 export default function Game({ game, relatedGames }) {
@@ -29,13 +34,13 @@ export default function Game({ game, relatedGames }) {
       <Head>
         <title>{`Play ` + game.title + ` on ` + SITE_META.NAME}</title>
       </Head>
-      <Script
+      {/* <Script
         id={`gads-init`}
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
         crossOrigin="anonymous"
         strategy={`beforeInteractive`}
-      />
+      /> */}
       <div className="detail">
         <Detail game={game} />
         <section>
@@ -47,7 +52,7 @@ export default function Game({ game, relatedGames }) {
               {relatedGames.map((i, index) => (
                 <Fragment key={i.slug}>
                   <li className="item">
-                    <Link href={`/` + i.appid + `.html`}>
+                    <Link href={`/game/` + i.slug}>
                       <a className="item-link">
                         <Image
                           className="image"
@@ -58,28 +63,22 @@ export default function Game({ game, relatedGames }) {
                           loading={index <= 3 ? `eager` : `lazy`}
                         />
                         <div>
-                          <div className="mt-1 mb-3 text-sky-700">
-                            {i.title}
-                          </div>
+                          <div className="title">{i.title}</div>
                           <div>
-                            <span className="mr-3 bg-star bg-no-repeat pl-6 font-bold text-orange-500">
-                              {i.rating}
-                            </span>
-                            <span className="bg-play bg-left bg-no-repeat pl-7 text-sm text-slate-400">
-                              {i.played}
-                            </span>
+                            <span className="item-rating">{i.rating}</span>
+                            <span className="item-played">{i.played}</span>
                           </div>
                         </div>
                       </a>
                     </Link>
                   </li>
-                  {index === 3 || index === 7 ? (
+                  {/* {index === 3 || index === 7 ? (
                     <Banner
                       slot={ADS_SLOTS_ID.DETAIL}
                       format={[`horizontal`]}
                       auto
                     />
-                  ) : null}
+                  ) : null} */}
                 </Fragment>
               ))}
             </ul>
@@ -92,7 +91,9 @@ export default function Game({ game, relatedGames }) {
 
 export const getStaticProps = async (ctx) => {
   let fullData = data?.data?.fullData;
-
+  fullData = fullData.filter(
+    (i) => !EXCLUED_GAMES.includes(i.title.replace(/ /g, ``))
+  );
   fullData.forEach((game) => {
     delete game.id;
     // delete game.appid;
@@ -100,15 +101,11 @@ export const getStaticProps = async (ctx) => {
     delete game.url;
   });
 
-  let game = fullData.find(
-    (i) => i.appid === ctx.params.appid.replace(/\.html/g, ``)
-  );
+  let game = fullData.find((i) => i.slug === ctx.params.slug);
 
   let relatedGames = [];
   let tmp = fullData.slice();
-  tmp = tmp
-    .filter((i) => i.appid !== ctx.params.appid.replace(/\.html/g, ``))
-    .slice(0, 12);
+  tmp = tmp.filter((i) => i.slug !== ctx.params.slug).slice(0, 12);
 
   relatedGames = tmp.map((game) => ({
     category: game.category,
@@ -116,7 +113,7 @@ export const getStaticProps = async (ctx) => {
     slug: game.slug,
     rating: game.rating,
     played: game.played,
-    appid: game.appid,
+    // appid: game.appid,
   }));
 
   return {
@@ -128,9 +125,12 @@ export const getStaticProps = async (ctx) => {
 };
 
 export const getStaticPaths = async () => {
-  const basicData = data?.data?.basicData;
+  let basicData = data?.data?.basicData;
+  basicData = basicData.filter(
+    (i) => !EXCLUED_GAMES.includes(i.title.replace(/ /g, ``))
+  );
   const paths = basicData.map((i) => ({
-    params: { slug: i.slug, appid: i.title.replace(/ /g, ``) + `.html` },
+    params: { slug: i.slug },
   }));
   return {
     paths,

@@ -1,0 +1,323 @@
+{
+  "dataForHome": [
+    {
+      "category": { "slug": "strategy", "name": "Strategy" },
+      "data": [
+        {
+          "id": "2369",
+          "title": "Magic Bomb",
+          "slug": "magic-bomb",
+          "rating": "4.5"
+        },
+        {
+          "id": "2357",
+          "title": "Super Cells",
+          "slug": "super-cells",
+          "rating": "4.3"
+        },
+        {
+          "id": "2346",
+          "title": "My Territory",
+          "slug": "my-territory",
+          "rating": "4.4"
+        },
+        {
+          "id": "2324",
+          "title": "Tiny War",
+          "slug": "tiny-war",
+          "rating": "4.1"
+        }
+      ],
+      "total": 16
+    },
+    {
+      "category": { "slug": "sports", "name": "Sports" },
+      "data": [
+        {
+          "id": "2319",
+          "title": "Shooting Star",
+          "slug": "shooting-star",
+          "rating": "4.2"
+        },
+        {
+          "id": "2316",
+          "title": "Billiard King",
+          "slug": "billiard-king",
+          "rating": "4.2"
+        },
+        {
+          "id": "2305",
+          "title": "Power Shooter",
+          "slug": "power-shooter",
+          "rating": "4.4"
+        },
+        {
+          "id": "225",
+          "title": "Super Golf",
+          "slug": "super-golf",
+          "rating": "4.3"
+        }
+      ],
+      "total": 10
+    },
+    {
+      "category": { "slug": "simulation", "name": "Simulation" },
+      "data": [
+        { "id": "2363", "title": "My Cat", "slug": "my-cat", "rating": "4.2" },
+        {
+          "id": "2361",
+          "title": "Island Survival",
+          "slug": "island-survival",
+          "rating": "4.2"
+        },
+        {
+          "id": "2329",
+          "title": "Little Farm",
+          "slug": "little-farm",
+          "rating": "4.2"
+        },
+        {
+          "id": "2322",
+          "title": "Booming Plant",
+          "slug": "booming-plant",
+          "rating": "4.2"
+        }
+      ],
+      "total": 8
+    },
+    {
+      "category": { "slug": "shooting", "name": "Shooting" },
+      "data": [
+        {
+          "id": "2365",
+          "title": "Best Shooter",
+          "slug": "best-shooter",
+          "rating": "4.5"
+        },
+        {
+          "id": "2349",
+          "title": "Super Archer",
+          "slug": "super-archer",
+          "rating": "4.3"
+        },
+        {
+          "id": "2342",
+          "title": "Archery King",
+          "slug": "archery-king",
+          "rating": "4.4"
+        },
+        {
+          "id": "2321",
+          "title": "Best Sniper",
+          "slug": "best-sniper",
+          "rating": "4.3"
+        }
+      ],
+      "total": 13
+    },
+    {
+      "category": { "slug": "racing", "name": "Racing" },
+      "data": [
+        {
+          "id": "2371",
+          "title": "Crazy Rowing",
+          "slug": "crazy-rowing",
+          "rating": "4.2"
+        },
+        {
+          "id": "2368",
+          "title": "Ice Escape",
+          "slug": "ice-escape",
+          "rating": "4.2"
+        },
+        {
+          "id": "2331",
+          "title": "Skating Master",
+          "slug": "skating-master",
+          "rating": "4.4"
+        },
+        {
+          "id": "2307",
+          "title": "City Express",
+          "slug": "city-express",
+          "rating": "4.3"
+        }
+      ],
+      "total": 12
+    },
+    {
+      "category": { "slug": "puzzle", "name": "Puzzle" },
+      "data": [
+        {
+          "id": "2373",
+          "title": "Move The Car",
+          "slug": "move-the-car",
+          "rating": "4.4"
+        },
+        {
+          "id": "2359",
+          "title": "Gravity Bowling",
+          "slug": "gravity-bowling",
+          "rating": "4.4"
+        },
+        {
+          "id": "2355",
+          "title": "My Home",
+          "slug": "my-home",
+          "rating": "4.4"
+        },
+        {
+          "id": "2354",
+          "title": "Magic Worm",
+          "slug": "magic-worm",
+          "rating": "4.4"
+        }
+      ],
+      "total": 32
+    },
+    {
+      "category": { "slug": "match-3", "name": "Match 3" },
+      "data": [
+        {
+          "id": "2312",
+          "title": "Color Crash",
+          "slug": "color-crash",
+          "rating": "4.1"
+        },
+        {
+          "id": "2283",
+          "title": "Rainbow Splash",
+          "slug": "rainbow-splash",
+          "rating": "4.4"
+        },
+        {
+          "id": "2282",
+          "title": "Matching Cook",
+          "slug": "matching-cook",
+          "rating": "4.1"
+        },
+        {
+          "id": "2268",
+          "title": "Melody Link",
+          "slug": "melody-link",
+          "rating": "4.1"
+        }
+      ],
+      "total": 14
+    },
+    {
+      "category": { "slug": "casual", "name": "Casual" },
+      "data": [
+        {
+          "id": "2362",
+          "title": "Magic Carpenter",
+          "slug": "magic-carpenter",
+          "rating": "4.2"
+        },
+        {
+          "id": "2332",
+          "title": "Nasty Bomb",
+          "slug": "nasty-bomb",
+          "rating": "4.3"
+        },
+        {
+          "id": "1264",
+          "title": "Candy Hit",
+          "slug": "candy-hit",
+          "rating": "4.5"
+        },
+        {
+          "id": "220",
+          "title": "Shoot Smash",
+          "slug": "shoot-smash",
+          "rating": "4.4"
+        }
+      ],
+      "total": 7
+    },
+    {
+      "category": { "slug": "arcade", "name": "Arcade" },
+      "data": [
+        {
+          "id": "2375",
+          "title": "Throw Man",
+          "slug": "throw-man",
+          "rating": "4.4"
+        },
+        {
+          "id": "2374",
+          "title": "Running Shoot",
+          "slug": "running-shoot",
+          "rating": "4.5"
+        },
+        {
+          "id": "2370",
+          "title": "Bubble Man",
+          "slug": "bubble-man",
+          "rating": "4.5"
+        },
+        {
+          "id": "2367",
+          "title": "Human Tower",
+          "slug": "human-tower",
+          "rating": "4.4"
+        }
+      ],
+      "total": 34
+    },
+    {
+      "category": { "slug": "adventure", "name": "Adventure" },
+      "data": [
+        {
+          "id": "2364",
+          "title": "Attack Hero",
+          "slug": "attack-hero",
+          "rating": "4.4"
+        },
+        {
+          "id": "2348",
+          "title": "Sausage Run",
+          "slug": "sausage-run",
+          "rating": "4.2"
+        },
+        {
+          "id": "2341",
+          "title": "Crazy Conveyor",
+          "slug": "crazy-conveyor",
+          "rating": "4.1"
+        },
+        {
+          "id": "2339",
+          "title": "Clever Strut",
+          "slug": "clever-strut",
+          "rating": "4.2"
+        }
+      ],
+      "total": 10
+    },
+    {
+      "category": { "slug": "girl", "name": "Girl" },
+      "data": [
+        {
+          "id": "185",
+          "title": "Dress Queen",
+          "slug": "dress-queen",
+          "rating": "4.2"
+        }
+      ],
+      "total": 1
+    },
+    {
+      "category": { "slug": "io", "name": "IO" },
+      "data": [
+        {
+          "id": "1270",
+          "title": "Crazy Gunfight",
+          "slug": "crazy-gunfight",
+          "rating": "4.4"
+        }
+      ],
+      "total": 1
+    }
+  ]
+}

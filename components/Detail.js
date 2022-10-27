@@ -27,7 +27,7 @@ export default function Detail({ game }) {
             <div className="game-rating">
               <span>{game.rating}</span>
             </div>
-            <Link href={`/category/` + game.category.slug + `.html`}>
+            <Link href={`/category/` + game.category.slug}>
               <a className="game-category">{game.category.name}</a>
             </Link>
           </div>
@@ -39,7 +39,7 @@ export default function Detail({ game }) {
         </a>
       </Link>
 
-      <Banner auto slot={ADS_SLOTS_ID.DETAIL} />
+      {/* <Banner auto slot={ADS_SLOTS_ID.DETAIL} /> */}
 
       <div className="description">
         <div className="title">Description</div>

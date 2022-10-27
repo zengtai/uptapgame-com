@@ -3,7 +3,12 @@ import Head from "next/head";
 import Layout from "../../components/Layout";
 
 import Link from "next/link";
-import { SITE_META, ADSENSE_ID, ADS_SLOTS_ID } from "../../lib/constants";
+import {
+  SITE_META,
+  ADSENSE_ID,
+  ADS_SLOTS_ID,
+  EXCLUED_GAMES,
+} from "../../lib/constants";
 
 import data from "../../data/games";
 import { getImageUrl } from "../../lib/api";
@@ -18,13 +23,13 @@ export default function Category({ games, category }) {
       <Head>
         <title>{category.name + ` Games | ` + SITE_META.NAME}</title>
       </Head>
-      <Script
+      {/* <Script
         id={`gads-init`}
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
         crossOrigin="anonymous"
         strategy={`beforeInteractive`}
-      />
+      /> */}
 
       <div className={`archived`}>
         <section>
@@ -33,7 +38,7 @@ export default function Category({ games, category }) {
             <span className="total">{games.length}</span>
           </div>
           <div className={`section-body`}>
-            <ul className="grid gap-2 xl:grid-cols-5 xl:gap-4">
+            <ul className="list">
               {games.map((i, index) => (
                 <Fragment key={i.slug}>
                   <li className="item">
@@ -54,8 +59,8 @@ export default function Category({ games, category }) {
                         </span>
                       </div>
                     ) : null}
-                    <Link href={`/` + i.appid + `.html`}>
-                      <a className="flex space-x-3 rounded-2xl border p-2">
+                    <Link href={`/game/` + i.slug}>
+                      <a className="item-link">
                         <Image
                           className="image"
                           src={getImageUrl(i.title)}
@@ -65,28 +70,22 @@ export default function Category({ games, category }) {
                           loading={index <= 9 ? `eager` : `lazy`}
                         />
                         <div>
-                          <div className="mt-1 mb-3 text-sky-700">
-                            {i.title}
-                          </div>
+                          <div className="title">{i.title}</div>
                           <div>
-                            <span className="mr-3 bg-star bg-no-repeat pl-6 font-bold text-orange-500">
-                              {i.rating}
-                            </span>
-                            <span className="bg-play bg-left bg-no-repeat pl-7 text-sm text-slate-400">
-                              {i.played}
-                            </span>
+                            <span className="item-rating">{i.rating}</span>
+                            <span className="item-played">{i.played}</span>
                           </div>
                         </div>
                       </a>
                     </Link>
                   </li>
-                  {index === 2 ? (
+                  {/* {index === 2 ? (
                     <Banner
                       auto
                       format={[`horizontal`]}
                       slot={ADS_SLOTS_ID.CATEGORY}
                     />
-                  ) : null}
+                  ) : null} */}
                 </Fragment>
               ))}
             </ul>
@@ -101,19 +100,20 @@ export default function Category({ games, category }) {
 }
 
 export const getStaticProps = async (ctx) => {
-  const fullData = data?.data?.fullData;
+  let fullData = data?.data?.fullData;
+  fullData = fullData.filter(
+    (i) => !EXCLUED_GAMES.includes(i.title.replace(/ /g, ``))
+  );
 
   let games = [];
-  let tmp = fullData
-    .slice()
-    .filter((i) => i.category.slug === ctx.params.slug.replace(/\.html/g, ``));
+  let tmp = fullData.slice().filter((i) => i.category.slug === ctx.params.slug);
   games = tmp.map((game) => ({
     category: game.category,
     title: game.title,
     slug: game.slug,
     rating: game.rating,
     played: game.played,
-    appid: game.appid,
+    // appid: game.appid,
   }));
 
   return {
@@ -125,10 +125,23 @@ export const getStaticProps = async (ctx) => {
 };
 
 export const getStaticPaths = async () => {
-  const categories = data?.data?.categories;
-  const paths = categories.map((i) => ({
+  const basicData = data?.data?.basicData;
+  // const categories = games.map((i) => i.category);
+
+  // let games = dataForHome.slice().sort((i) => (i.total < 4 ? 1 : -1)); // 数量小于4的分类排序后置
+
+  let tmp =
+    EXCLUED_GAMES &&
+    basicData
+      .slice()
+      .filter((i) => !EXCLUED_GAMES.includes(i.title.replace(/ /g, ``)));
+
+  let tmpCategories = tmp.map((i) => i.category.slug);
+  tmpCategories = [...new Set(tmpCategories)];
+
+  const paths = tmpCategories.map((i) => ({
     params: {
-      slug: i.slug + `.html`,
+      slug: i,
     },
   }));
 

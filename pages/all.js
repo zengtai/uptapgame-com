@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 
-import { ADSENSE_ID, ADS_SLOTS_ID, SITE_META } from "../lib/constants";
+import {
+  ADSENSE_ID,
+  ADS_SLOTS_ID,
+  EXCLUED_GAMES,
+  SITE_META,
+} from "../lib/constants";
 // import Link from "next/link";
 import data from "../data/games";
 // import { getImageUrl } from "../lib/api";
@@ -25,7 +30,7 @@ export default function AllGames({ games }) {
       />
 
       <div className={`archived all`}>
-        <Banner auto slot={ADS_SLOTS_ID.CATEGORY} />
+        {/* <Banner auto slot={ADS_SLOTS_ID.CATEGORY} /> */}
         <section>
           <div className={`section-head`}>
             <h2 className={`h2`}>All Games</h2>
@@ -45,6 +50,9 @@ export default function AllGames({ games }) {
 
 export const getStaticProps = async (ctx) => {
   let games = data?.data?.basicData;
+  games = games.filter(
+    (i) => !EXCLUED_GAMES.includes(i.title.replace(/ /g, ``))
+  );
   games.forEach((element) => {
     delete element.id;
     delete element.rating;

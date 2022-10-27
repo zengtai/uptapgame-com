@@ -8,12 +8,12 @@ export default function Privacy(params) {
       <Head>
         <title>{`Privacy Policy` + ` | ` + SITE_META.NAME}</title>
       </Head>
-      <div className={`page xl:mx-auto`}>
+      <div className={`page`}>
         <section>
           <div className="section-head">
             <h2 className="h2">Privacy Policy</h2>
           </div>
-          <div className="mx-8 p-4 rounded-md text-sky-900 mb-4 bg-sky-200">
+          <div className="mx-8 mb-4 rounded-md bg-sky-200 p-4 text-sky-900">
             <p>
               At {SITE_META.NAME}, accessible from {SITE_META.URL}, one of our
               main priorities is the privacy of our visitors. This Privacy
