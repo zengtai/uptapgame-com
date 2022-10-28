@@ -21,14 +21,19 @@ export default function Detail({ game }) {
   return (
     <>
       <div className="game-info">
-        <Image
-          className="image"
-          src={getImageUrl(game.title)}
-          width={200}
-          height={200}
-          alt={game.title}
-          loading={`eager`}
-        />
+        <picture>
+          <source type="image/avif" srcSet={getImageUrl(game.title, `avif`)} />
+          <source type="image/webp" srcSet={getImageUrl(game.title, `webp`)} />
+          <img
+            className="image"
+            src={getImageUrl(game.title)}
+            alt={game.title}
+            width={200}
+            height={200}
+            loading={`eager`}
+            decoding="async"
+          />
+        </picture>
         <div>
           <h1 className="title">{game.title}</h1>
           <div className="game-meta">
