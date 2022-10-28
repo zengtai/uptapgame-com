@@ -1,15 +1,23 @@
 import Image from "next/future/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getGameUrl, getImageUrl } from "../lib/api";
 import { ADS_SLOTS_ID } from "../lib/constants";
 import Banner from "./Banner";
 export default function Detail({ game }) {
   const [showAll, setShowAll] = useState(false);
 
-  function handleClick() {
-    setShowAll(() => !showAll);
-  }
+  useEffect(() => {
+    function handleClick() {
+      setShowAll(() => !showAll);
+    }
+    let content = document.querySelector(`.content`);
+    content.addEventListener(`click`, handleClick);
+    return () => {
+      content.removeEventListener(`click`, handleClick);
+    };
+  }, [showAll]);
+
   return (
     <>
       <div className="game-info">
@@ -44,7 +52,7 @@ export default function Detail({ game }) {
       <div className="description">
         <div className="title">Description</div>
         <div
-          onClick={handleClick}
+          // onClick={handleClick}
           className={`content` + (!showAll ? ` h-16` : ` pb-4`)}
         >
           {game.description}

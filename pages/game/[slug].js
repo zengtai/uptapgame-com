@@ -27,7 +27,10 @@ export default function Game({ game, relatedGames }) {
       gtag && gtag("event", "click_CTA", { game: game.title });
     }
     const CTA = document.querySelector(".play-btn");
-    CTA.addEventListener("click", handleClick);
+    CTA.addEventListener("click", handleClick, false);
+    return () => {
+      CTA.removeEventListener("click", handleClick);
+    };
   }, [game.title]);
   return (
     <Layout>

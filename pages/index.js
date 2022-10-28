@@ -18,12 +18,12 @@ import Banner from "../components/Banner";
 import { Fragment } from "react";
 
 export default function Home({ games }) {
-  console.log(`games: `, JSON.stringify(games));
+  // console.log(`games: `, JSON.stringify(games));
   // console.log(`categories: `, categories);
   return (
     <Layout>
       <Head>
-        <title>{SITE_META.NAME + ` | ` + SITE_META.TAGLINE}</title>
+        <title>{`Home | ` + SITE_META.NAME}</title>
         <meta name="description" content={SITE_META.TAGLINE} />
       </Head>
       {/* <Script
