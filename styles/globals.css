@@ -144,7 +144,7 @@ body {
     @apply grid grid-cols-4 gap-2 xl:grid-cols-12 xl:gap-4;
   }
   .image {
-    @apply xl:w-full;
+    @apply w-full;
   }
   .item-link {
     @apply border-none p-0;

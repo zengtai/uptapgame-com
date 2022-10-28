@@ -56,15 +56,26 @@ export default function Game({ game, relatedGames }) {
                 <Fragment key={i.slug}>
                   <li className="item">
                     <Link href={`/game/` + i.slug}>
-                      <a className="item-link">
-                        <Image
-                          className="image"
-                          src={getImageUrl(i.title)}
-                          alt={i.title}
-                          width={100}
-                          height={100}
-                          loading={index <= 3 ? `eager` : `lazy`}
-                        />
+                      <a className="item-link" title={i.title}>
+                        <picture>
+                          <source
+                            type="image/avif"
+                            srcSet={getImageUrl(i.title, `avif`)}
+                          />
+                          <source
+                            type="image/webp"
+                            srcSet={getImageUrl(i.title, `webp`)}
+                          />
+                          <img
+                            className="image"
+                            src={getImageUrl(i.title)}
+                            alt={i.title}
+                            width={100}
+                            height={100}
+                            loading={index <= 3 ? `eager` : `lazy`}
+                            decoding="async"
+                          />
+                        </picture>
                         <div>
                           <div className="title">{i.title}</div>
                           <div>
