@@ -16,10 +16,12 @@ import data from "../data/games";
 // import ListItem from "../components/ListItem";
 import Banner from "../components/Banner";
 import { Fragment } from "react";
+import { getOriginalData } from "../lib/api";
 
 export default function Home({ games }) {
   // console.log(`games: `, JSON.stringify(games));
   // console.log(`categories: `, categories);
+
   return (
     <Layout>
       <Head>
@@ -101,6 +103,7 @@ export const getStaticProps = async (ctx) => {
   return {
     props: {
       games: homeData,
+
       // categories,
     },
   };

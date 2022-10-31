@@ -2,10 +2,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { SITE_META } from "../lib/constants";
+import Search from "./Search";
 
 export default function Navbar({ navItems }) {
   const [isOpen, setIsOpen] = useState(false); // 默认不展开导航菜单
-
+  const [openSearch, setOpenSearch] = useState(false);
   const router = useRouter();
   // const currentQuery = router.query;
   const currentPath = router.asPath;
@@ -17,6 +18,10 @@ export default function Navbar({ navItems }) {
   function handleClick() {
     setIsOpen(() => !isOpen);
     // console.log(`isOpen`, isOpen);
+  }
+
+  function handleSearch() {
+    setOpenSearch(() => !openSearch);
   }
 
   useEffect(() => {
@@ -124,6 +129,31 @@ export default function Navbar({ navItems }) {
               <Link href={`/category/strategy`}>Strategy</Link>
             </li>
           </ul>
+        </div>
+        <div
+          onClick={handleSearch}
+          className="search-icon absolute -top-1 right-10 text-sky-300 xl:right-3.5 xl:top-3 xl:text-cyan-400"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-8 w-8 xl:h-10 xl:w-10"
+          >
+            <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
+            <path
+              fillRule="evenodd"
+              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </div>
+        <div className={openSearch ? "relative z-20" : "hidden"}>
+          <Search />
+          <div
+            onClick={handleSearch}
+            className="mask fixed inset-0 z-10 bg-black/30"
+          ></div>
         </div>
       </nav>
     </header>
